@@ -1,6 +1,8 @@
 Class AbsConnexion(SuperActeur):
 
-  def __init__(self,statut,activite):
+  def __init__(self,statut,0):
+    self.id=1
+    self.mdp="ab"
     self.statut=statut
     self.activite=activite
     
@@ -23,6 +25,9 @@ Class AbsConnexion(SuperActeur):
       value2=input("> ")
       if str(value2)==dict_compte[value][0] : 
         print "Connexion réussie !"
+        self.id=value
+        self.mdp=value2
+        self.statut=dict_compte[value][1]
         self.activite=1
       else :
         print("Le mot de passe est incorrect. Voulez-vous recommencer ?")
