@@ -12,7 +12,9 @@ class class_abstraite2 (class_abstraite_connexion):
     if rep_oui_non=="O": # Je ne connais la syntaxe des corrections ou propositions 
     
     del liste_correction["proposition"] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
-    return("L'operation Accepter ou refuser une proposition est effectuee")
+    print("L'operation Accepter ou refuser une proposition est effectuee")
+    return Menu Principal
+  
   def ajouter_pays(): # par la suite le dictionnaire des pays sera appelé, liste_pays
     nom_pays=input("Quel est le nom du pays que vous souhaitez créer?")
     pays_deja=True
@@ -27,15 +29,29 @@ class class_abstraite2 (class_abstraite_connexion):
     inflation = input("Quel est le taux d'inflation de "+nom_pays+" ?")
     dette=input("Quelle est la dette de "+nom_pays+" ?")
     taux_de_chomage=input("Quel est le taux de chomage de "+nom_pays + " ?")
-    liste_pays[nom_pays]=[superficie, population, croissance_demographique, inflation, dette, taux de chomage] # ajout du pays dans le dictionnaire
-    return("le pays est ajoute")
+    dico_pays[nom_pays]=[superficie, population, croissance_demographique, inflation, dette, taux de chomage] # ajout du pays dans le dictionnaire
+    print("le pays est ajoute")
+    return Menu Principal
   
   def modifier_pays(pays):
     pays=input("Quel pays souhaitez-vous modifier les informations ?")
-    print ("[1] Superficie")
-    print("[2] Nombre d'habitants")
-    print ("[3] Taux de croissance de la population")
+    liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
+                        "taux de chomage", "taux de dépenses", "taux de depenses en sante", "taux de depense en education",
+                        "taux de depenses militaires", "cinq classes d'age"]
+    for i in len(liste_informations): # on demande quelle information l'utilisateur souhaite modifier 
+      print(str("["i+1"]"+liste_informations[i]))
+          
     indice=input("Quelle information souhaitez-vous modifier ?")
+    info_a_modifier=liste_information[indice-1]
+    print("Voici l'information actuelle que vous souhaitez modifier.")
+    print(dico_pays[pays][info_a_modifier])
+    
+    new_info=input("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
+    dico_pays[pays][liste_information[indice-1]]=new_info
+    print("L'information ("+ info_a_modifier+ ") du pays" pays "a été modifié")
+    return Menu Principal
+    
+    
     
     
     
