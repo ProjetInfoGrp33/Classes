@@ -1,7 +1,5 @@
 Class Preconsultant():
-  def __init__(self, id_cons):
-    self.id_cons=id_cons
-    self.statut="Consultant"
+  def __init__(self):
   
   def proposer_correction(self):
     print ("Entrer le nom du pays à corriger :")
