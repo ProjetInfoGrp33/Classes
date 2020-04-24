@@ -19,4 +19,7 @@ class SuperActeur():
         if value2 in ["1","Oui","oui","O","o"]:
           afficher_pays(self)
     return menu.open_menu.Menu(memory)
+  def set_indices_taches(self,indice_taches):
+    self.indicetache=indice_taches
+    return(self.indicetache)
   
