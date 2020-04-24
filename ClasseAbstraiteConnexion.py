@@ -1,4 +1,4 @@
-Class AbsConnexion(SuperActeur):
+Class classe_abstraite_connexion(SuperActeur):
 
   def __init__(self,statut,0):
     self.id=1
