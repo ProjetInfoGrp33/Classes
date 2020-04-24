@@ -1,8 +1,7 @@
-Class Consultant(SuperActeur):
+Class Consultant(SuperActeur, Preconsultant):
   
-  def __init__(self, statut, id_cons):
-    self.id_cons=id_cons
-    self.statut="Consultant"
+  def __init__(self, id_cons):
+    Preconsultant.__init__(id_cons)
    
   def proposer_correction(self):
     print ("Entrer le nom du pays à corriger :")
