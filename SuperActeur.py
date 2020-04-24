@@ -1,8 +1,6 @@
 class SuperActeur():
   def __init__(self,statut):
     self.statut=statut
-    self.id=id
-    self.motdepasse=motdepasse
 
   def afficher_pays(self):
     print("Entrer le nom du pays à afficher :")
