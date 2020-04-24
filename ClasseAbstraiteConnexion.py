@@ -1,8 +1,8 @@
 Class classe_abstraite_connexion(SuperActeur):
 
   def __init__(self,statut,0):
-    self.id=1
-    self.mdp="ab"
+    self.id=id
+    self.mdp=mdp
     self.statut=statut
     self.activite=activite
     
