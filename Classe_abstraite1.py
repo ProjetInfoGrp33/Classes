@@ -1,4 +1,4 @@
-Class Classe_abstraite1(AbsConnexion):
+Class classe_abstraite1(classe_abstraite_connexion):
   
   def __init__(self,statut,activite):
     self.statut=statut
