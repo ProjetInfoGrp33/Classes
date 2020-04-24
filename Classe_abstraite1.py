@@ -1,3 +1,4 @@
+from classe_abstraite_connexion import classe_abstraite_connexion
 Class classe_abstraite1(classe_abstraite_connexion):
   
   def __init__(self,statut,activite):
