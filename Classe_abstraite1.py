@@ -7,9 +7,8 @@ import numpy as np
 # + tests unitaire à rajouter : lorsqu'on choisit critere dans la liste n entre 1 et 9
 
 Class classe_abstraite1(classe_abstraite_connexion):
-  def __init__(self,statut,activite):
-    self.statut=statut
-    self.activite=activite
+  def __init__(self,id=None,mdp=None,statut=None,activite=0):
+    classe_abstraite_connexion.__init__(self,id,mdp,statut,activite)
   
   def resume_informations(self,donnees): # créer un menu pour choisir dans les actions proposées
         # n premiers/derniers pays pour 1 critere 
