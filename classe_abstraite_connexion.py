@@ -1,7 +1,7 @@
 from SuperActeur import SuperActeur
 Class classe_abstraite_connexion(SuperActeur):
 
-  def __init__(self,statut,0):
+  def __init__(self,id=None,mdp=None,statut=None,activite=0):
     self.id=id
     self.mdp=mdp
     self.statut=statut
