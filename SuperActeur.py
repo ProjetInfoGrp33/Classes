@@ -2,7 +2,7 @@ class SuperActeur():
   def __init__(self,statut):
     self.statut=statut
 
-  def afficher_pays(self):
+  def afficher_pays(self, memory):
     print("Entrer le nom du pays à afficher :")
     temp=0
     value = input("> ")
