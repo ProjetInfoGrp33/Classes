@@ -24,12 +24,8 @@ Class classe_abstraite_connexion(SuperActeur):
     print ("Entrer votre mot de passe :")
     while True:
       value2=input("> ")
-      if str(value2)==dict_compte[value][0] : 
+      if str(value2)==dict_compte[value]["mdp"] : 
         print "Connexion réussie !"
-        self.id=value
-        self.mdp=value2
-        self.statut=dict_compte[value][1]
-        self.activite=1
       else :
         print("Le mot de passe est incorrect. Voulez-vous recommencer ?")
         print("[1] Oui")
@@ -40,7 +36,12 @@ Class classe_abstraite_connexion(SuperActeur):
             break
         print ("Entrer votre mot de passe :")
         continue
-    return menu.open_menu.Menu(memory)
+    if dict_compte[value]["Statut"]=="Géographe":
+      return Geographe(value,dict_compte[value]["mdp"],dict_compte[value]["Statut"],1) , "indice_taches_geo"
+    if dict_compte[value]["Statut"]=="Data_Scientist":
+      return Data_Scientist(value,dict_compte[value]["mdp"],dict_compte[value]["Statut"],1), "indice_taches_ds"
+    if dict_compte[value]["Statut"]=="Administrateur":
+      return Administrateur(value,dict_compte[value]["mdp"],dict_compte[value]["Statut"],1), "indice_taches_admin"
   
   def deconnexion(self):
     print ("Au Revoir")
