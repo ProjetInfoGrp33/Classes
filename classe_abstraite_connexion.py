@@ -8,9 +8,6 @@ Class classe_abstraite_connexion(SuperActeur):
     self.activite=activite
     
   def connexion(self):
-    if self.activite==1:
-      print("Erreur : utilisateur déjà connecté :")
-      return menu.open_menu.Menu(memory)
     print("Entrer votre identifiant:")
     while True:
       temp=0
@@ -30,10 +27,9 @@ Class classe_abstraite_connexion(SuperActeur):
         print("Le mot de passe est incorrect. Voulez-vous recommencer ?")
         print("[1] Oui")
         print("[2] Non")
-        while True:
-          value2 = input("> ")
-          if value2 in ["1","Oui","oui","O","o"]:
-            break
+        value2 = input("> ")
+        if value2 in ["2","Non","N","non","n"]:
+          return(None, None)
         print ("Entrer votre mot de passe :")
         continue
     if dict_compte[value]["Statut"]=="Géographe":
