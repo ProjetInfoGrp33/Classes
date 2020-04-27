@@ -8,14 +8,15 @@ class SuperActeur():
   def ret_afficher_pays (self): # ce sera 
     print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
     pays = input("> ")
-    if verifier_pays (self, pays):
+    if self.verifier_pays (pays):
       return dict_pays[pays]
     else:
       return None
 
   def afficher_pays(self, memory):
     while True: 
-      if ret_afficher_pays(self)==None:
+      result=self.ret_afficher_pays()
+      if result==None:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
         print("[2] Non")
@@ -23,7 +24,7 @@ class SuperActeur():
         if value2 in ["1","Oui","oui","O","o"]:
           continue
       else:
-        print(ret_afficher_pays)
+        print(result)
     return menu.open_menu.Menu(memory)
   
   
