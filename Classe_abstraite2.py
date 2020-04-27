@@ -15,23 +15,27 @@ class class_abstraite2 (class_abstraite_connexion):
     print("L'operation Accepter ou refuser une proposition est effectuee")
     return Menu Principal
   
-  def ajouter_pays(): # par la suite le dictionnaire des pays sera appelé, liste_pays
+  def pays_deja(self,pays):
+    return data.has_key(pays) # le dictionnaire des pays s'appelle data 
+  
+  def ret_ajouter_pays(self): # 
     nom_pays=input("Quel est le nom du pays que vous souhaitez créer?")
-    pays_deja=True
-    while pays_deja: # on vérifie que le pays à ajouter  n'existe pas 
-      if liste_pays.has_key(nom_pays):
-        nom_pays=input("Ce pays existe deja dans la base de donnees. Veuillez saisir à nouveau le pays que vous voulez créer.")
-      else:
-        pays_deja=False
-    supeficie = input("Quelle est la superficie de"+ nom_pays +" ?")
-    population=input ("Quel est le nombre d'habitants de " + nom_pays +" ?")
-    croissance_demographique= input("Quel est le taux de croissance de la population de "+nom_pays +" ?")
-    inflation = input("Quel est le taux d'inflation de "+nom_pays+" ?")
-    dette=input("Quelle est la dette de "+nom_pays+" ?")
-    taux_de_chomage=input("Quel est le taux de chomage de "+nom_pays + " ?")
-    dico_pays[nom_pays]=[superficie, population, croissance_demographique, inflation, dette, taux de chomage] # ajout du pays dans le dictionnaire
-    print("le pays est ajoute")
-    return Menu Principal
+    
+    if pays _deja(self, nom_pays):
+      supeficie = input("Quelle est la superficie de"+ nom_pays +" ?")
+      population=input ("Quel est le nombre d'habitants de " + nom_pays +" ?")
+      croissance_demographique= input("Quel est le taux de croissance de la population de "+nom_pays +" ?")
+      inflation = input("Quel est le taux d'inflation de "+nom_pays+" ?")
+      dette=input("Quelle est la dette de "+nom_pays+" ?")
+      taux_de_chomage=input("Quel est le taux de chomage de "+nom_pays + " ?")
+      data[nom_pays]={superficie, population, croissance_demographique, inflation, dette, taux de chomage} # ajout du pays dans le dictionnaire
+      return ("Le pays "+nom_pays + " est ajouté")
+    else:
+      return None
+   
+  def ajouter_pays(self):
+    if ret_ajouter_pays(self)==None:
+      
   
   def modifier_pays(pays):
     pays=input("Quel pays souhaitez-vous modifier les informations ?")
