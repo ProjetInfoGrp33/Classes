@@ -1,5 +1,5 @@
 from Preconsultant import Preconsultant
-drom SuperActeur import SuperActeur
+from SuperActeur import SuperActeur
 Class Consultant(SuperActeur, Preconsultant):
   
   def __init__(self, id_cons):
