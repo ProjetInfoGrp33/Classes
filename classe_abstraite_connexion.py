@@ -10,12 +10,8 @@ Class classe_abstraite_connexion(SuperActeur):
   def connexion(self):
     print("Entrer votre identifiant:")
     while True:
-      temp=0
       value=input("> ")
-      for id in dict_compte:
-        if value==id:
-          temp=1
-      if not temp:
+      if not dict_compte.has_key(value):
         print("Identifiant inexistant, veuillez réessayer")
         continue
     print ("Entrer votre mot de passe :")
