@@ -2,30 +2,25 @@ Class Preconsultant():
   def __init__(self):
   
   def proposer_correction(self):
-    print ("Entrer le nom du pays à corriger :")
-    temp=0
-    value = input("> ")
-    for cle in dict_pays : 
-      if str(value)==cle :
-        print dict_pays[str(value)]
-        temp=1
-        break
-    if not temp :
-      print("Le pays n'existe pas. Voulez-vous recommencer ?")
-      print("[1] Oui")
-      print("[2] Non")
-      value2 = input("> ")
-        if value2 in ["1","Oui","oui","O","o"]:
-          proposer_correction(self)
+    while True : 
+      print ("Entrer le nom du pays à corriger :")
+      temp=0
+      pays = input("> ")
+      if not dict_pays.has_key(pays):
+        print("Le pays n'existe pas. Voulez-vous recommencer ?")
+        print("[1] Oui")
+        print("[2] Non")
+        value = input("> ")
+        if value in ["1","Oui","oui","O","o"]:
+          continue
     print ("Entrer le numéro de l'information à corriger :")
     while True:
-      temp=0
-      value3 = input("> ")
-      try : value3=int(value3) and 0<= value3 and value3 <= len(dict_pays[str(value)])
+      num_info = input("> ")
+      try : num_info=int(num_info) and 0<= num_info and num_info <= len(dict_pays[str(pays)])
       except ValueError : 
         print ("La réponse attendue est un nombre entier compris entre 0 et le nombre maximum d'informations")
         continue
     print ("Entrer le contenu de la correction :")
-    value4 = input("> ")
-    dict_pays[str(value)][value3]=value4
+    correction = input("> ")
+    dict_pays[str(pays)][num_info]=correction
     return menu.open_menu.Menu(memory)
