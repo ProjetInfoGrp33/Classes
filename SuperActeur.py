@@ -20,8 +20,8 @@ class SuperActeur():
         print("[1] Oui")
         print("[2] Non")
         value2 = input("> ")
-          if value2 in ["1","Oui","oui","O","o"]:
-            continue
+        if value2 in ["1","Oui","oui","O","o"]:
+          continue
       else:
         print(ret_afficher_pays)
     return menu.open_menu.Menu(memory)
