@@ -21,7 +21,7 @@ class class_abstraite2 (class_abstraite_connexion):
   def ret_ajouter_pays(self): # 
     nom_pays=input("Quel est le nom du pays que vous souhaitez créer?")
     
-    if pays _deja(self, nom_pays):
+    if self.pays _deja(nom_pays):
       supeficie = input("Quelle est la superficie de"+ nom_pays +" ?")
       population=input ("Quel est le nombre d'habitants de " + nom_pays +" ?")
       croissance_demographique= input("Quel est le taux de croissance de la population de "+nom_pays +" ?")
@@ -34,8 +34,22 @@ class class_abstraite2 (class_abstraite_connexion):
       return None
    
   def ajouter_pays(self):
-    if ret_ajouter_pays(self)==None:
-      
+    while True: 
+      result=self.ret_afficher_pays()
+      if result==None:
+        print("Le pays n'existe pas. Voulez-vous recommencer ?")
+        print("[1] Oui")
+        print("[2] Non")
+        value2 = input("> ")
+        if value2 in ["2","Non","non","N","n"]:
+          break
+      else:
+        print(result)
+        break
+    return menu.open_menu.Menu(memory)
+    
+    
+    
   
   def modifier_pays(pays):
     pays=input("Quel pays souhaitez-vous modifier les informations ?")
