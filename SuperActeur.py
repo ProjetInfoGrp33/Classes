@@ -5,7 +5,7 @@ class SuperActeur():
   def verifier_pays (self, pays): # pour verifier que les paus 
     return dict_pays.has_key(pays)   
   
-  def ret_afficher_pays (self): # ce sera 
+  def ret_afficher_pays (self,pays): # ce sera 
     print("Entrer le nom du pays à afficher :")
     pays = input("> ")
     if verifier_pays (pays):
