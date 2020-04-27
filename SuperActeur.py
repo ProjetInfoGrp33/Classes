@@ -2,10 +2,10 @@ class SuperActeur():
   def __init__(self,statut):
     self.statut=statut
     
-  def verifier_pays (self, pays): # pour verifier que les paus 
+  def verifier_pays (self, pays): # pour verifier que les pays sont dans le dictionnaire des pays 
     return dict_pays.has_key(pays)   
   
-  def ret_afficher_pays (self): # ce sera 
+  def ret_afficher_pays (self): # ce sera la fonction que l'on testera 
     print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
     pays = input("> ")
     if self.verifier_pays (pays):
