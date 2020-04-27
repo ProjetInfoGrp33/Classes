@@ -1,19 +1,16 @@
 from classe_abstraite_connexion import classe_abstraite_connexion
 import pandas
 import numpy as np
-
-# Codes pour les fonctions statistiques resume_informations du Data Scientist
-# A faire : menu pour qu'il choisisse dans les 4 actions possibles (un peu long sinon)
-# + tests unitaire à rajouter : lorsqu'on choisit critere dans la liste n entre 1 et 9
-
 from fonctions_intermediaires_stat import pays_dans_la_base , choix_n , choix_pays , choix_critere , choix_seuil , liste_criteres, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
 import matplotlib.pyplot as plt
+
+
 
 Class classe_abstraite1(classe_abstraite_connexion):
   def __init__(self,id=None,mdp=None,statut=None,activite=0):
     classe_abstraite_connexion.__init__(self,id,mdp,statut,activite)
   
-    def resume_informations(self,donnees): # créer un menu pour choisir dans les actions proposées
+    def resume_informations(self,donnees): # à faire : créer un menu pour choisir dans les actions proposées
         # n premiers/derniers pays pour 1 critere 
         # les pays dont critere depasse un seuil
         # tableau des classes d'ages (10 max)
@@ -32,7 +29,10 @@ Class classe_abstraite1(classe_abstraite_connexion):
         boxplot_age(donnees)
         
 
-############### FONCTIONS FINALES
+############### LES 6 FONCTIONS A L'INTERIEUR 
+### utilisent elles meme des fonctions plus elementaires situées dans fonctions_intermediaires_stat  ###
+### pays_dans_la_base , choix_n , choix_pays , choix_critere , choix_seuil , liste_criteres, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays##
+
 def affichage_critere(donnees): # affiche criteres en un tableau pandas 
     print('Affichage des 9 informations sur une liste de pays choisis')
     liste_pays= choix_pays(donnees)
