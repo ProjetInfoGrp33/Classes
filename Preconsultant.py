@@ -1,7 +1,7 @@
 Class Preconsultant():
   def __init__(self):
   
-  def proposer_correction(self):
+  def proposer_correction(self,memory):
     while True : 
       print ("Entrer le nom du pays à corriger :")
       temp=0
