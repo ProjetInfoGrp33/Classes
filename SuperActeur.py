@@ -6,7 +6,7 @@ class SuperActeur():
     return dict_pays.has_key(pays)   
   
   def ret_afficher_pays (self, pays): # ce sera 
-    print("Entrer le nom du pays à afficher :")
+    print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
     pays = input("> ")
     if verifier_pays (self, pays):
       return dict_pays[pays]
