@@ -21,8 +21,8 @@ class SuperActeur():
         print("[1] Oui")
         print("[2] Non")
         value2 = input("> ")
-        if value2 in ["1","Oui","oui","O","o"]:
-          continue
+        if value2 in ["2","Non","non","N","n"]:
+          break
       else:
         print(result)
         break
