@@ -35,7 +35,7 @@ class class_abstraite2 (class_abstraite_connexion):
    
   def ajouter_pays(self):
     while True: 
-      result=self.ret_afficher_pays()
+      result=self.ret_ajouter_pays()
       if result==None:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
@@ -51,7 +51,7 @@ class class_abstraite2 (class_abstraite_connexion):
     
     
   
-  def modifier_pays(pays):
+  def modifier_pays(self):
     pays=input("Quel pays souhaitez-vous modifier les informations ?")
     liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
                         "taux de chomage", "taux de dépenses", "taux de depenses en sante", "taux de depense en education",
