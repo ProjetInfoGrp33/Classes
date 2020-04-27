@@ -52,22 +52,32 @@ class class_abstraite2 (class_abstraite_connexion):
     
   
   def modifier_pays(self):
-    pays=input("Quel pays souhaitez-vous modifier les informations ?")
-    liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
+    nom_pays=input("Quel pays souhaitez-vous modifier les informations ?")
+    while True:
+      result=pays_deja(nom_pays)
+      if not result:
+        print("Le pays n'existe pas. Voulez-vous recommencer ?")
+        print("[1] Oui")
+        print("[2] Non")
+        value2 = input("> ")
+        if value2 in ["2","Non","non","N","n"]:
+          break
+      else:
+        liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
                         "taux de chomage", "taux de dépenses", "taux de depenses en sante", "taux de depense en education",
                         "taux de depenses militaires", "cinq classes d'age"]
-    for i in len(liste_informations): # on demande quelle information l'utilisateur souhaite modifier 
-      print(str("["i+1"]"+liste_informations[i]))
+        for i in len(liste_informations): # on demande quelle information l'utilisateur souhaite modifier 
+          print(str("["i+1"]"+liste_informations[i]))
           
-    indice=input("Quelle information souhaitez-vous modifier ?")
-    info_a_modifier=liste_information[indice-1]
-    print("Voici l'information actuelle que vous souhaitez modifier.")
-    print(dico_pays[pays][info_a_modifier])
+        indice=input("Quelle information souhaitez-vous modifier ?")
+        info_a_modifier=liste_information[indice-1]
+        print("Voici l'information actuelle que vous souhaitez modifier.")
+        print(dico_pays[nom_pays][info_a_modifier])
     
-    new_info=input("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
-    dico_pays[pays][liste_information[indice-1]]=new_info
-    print("L'information ("+ info_a_modifier+ ") du pays" pays "a été modifié")
-    return Menu Principal
+        new_info=input("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
+        dico_pays[pays][liste_information[indice-1]]=new_info
+        print("L'information ("+ info_a_modifier+ ") du pays" pays "a été modifié")
+        return Menu Principal
     
     
     
