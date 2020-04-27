@@ -25,6 +25,7 @@ class SuperActeur():
           continue
       else:
         print(result)
+        break
     return menu.open_menu.Menu(memory)
   
   
