@@ -13,9 +13,9 @@ class SuperActeur():
       return None
 
   def afficher_pays(self, memory):
-    print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
-    pays = input("> ")
     while True: 
+      print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
+      pays = input("> ")
       result=self.ret_afficher_pays(pays)
       if result==None:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
