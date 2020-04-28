@@ -9,6 +9,9 @@ class Admin (Classe_abstraite1, Class_abstraite2):
     
   def pays_deja (self,pays):
     return (pays in dico_pays)
+ 
+  def enlever_pays(self,pays): # fonction que l'on va tester
+    del dico_pays[pays]
   
   def supprimer_pays(self): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
     pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
@@ -22,7 +25,7 @@ class Admin (Classe_abstraite1, Class_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        del dico_pays[pays_a_supprimer] # suppression du pays 
+        self.enlever_pays(pays_a_supprimer) 
         print("Le pays "+ pays_a_supprimer + est bien supprime")
         break
     return menu.open_menu.Menu(memory)
