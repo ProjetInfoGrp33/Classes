@@ -54,8 +54,25 @@ class Admin (Classe_abstraite1, Class_abstraite2):
         self.ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte)
         break
     return menu.open_menu.Menu(memory)
-        
-        
+  
+  def enlever_compte(self, id): # fonction que l'on va tester 
+    del Liste_compte[id]
+ 
+  def supprimer_compte(self,memory)
+    id_a_supprimer=input("Quel est l'id du compte que vous souhaitez supprimer")
+    while True: 
+      result=self.verifier_comte(id_a_supprimer)
+      if result==False:
+        print("Le compte n'existe pas. Voulez-vous recommencer ?")
+        print("[1] Oui")
+        print("[2] Non")
+        value2 = input("> ")
+        if value2 in ["2","Non","non","N","n"]:
+          break
+      else:
+        self.enlever_compte(id_a_supprimer)
+        break
+    return menu.open_menu.Menu(memory)
     
      
       
