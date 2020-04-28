@@ -5,17 +5,18 @@ class SuperActeur():
   def verifier_pays (self, pays): # pour verifier que les pays sont dans le dictionnaire des pays 
     return dict_pays.has_key(pays)   
   
-  def ret_afficher_pays (self): # ce sera la fonction que l'on testera 
-    print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
-    pays = input("> ")
+  def ret_afficher_pays (self,pays): # ce sera la fonction que l'on testera 
+    
     if self.verifier_pays (pays):
       return dict_pays[pays]
     else:
       return None
 
   def afficher_pays(self, memory):
+    print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
+    pays = input("> ")
     while True: 
-      result=self.ret_afficher_pays()
+      result=self.ret_afficher_pays(pays)
       if result==None:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
