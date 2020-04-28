@@ -23,7 +23,10 @@ Class Preconsultant():
         continue
       print ("Entrer le contenu de la correction :")
       correction = input("> ")
-      indice=len(dict_correction)
+      indice=0
+      for cle in dict_correction : 
+        indice=max(indice, cle)
+      indice+=1
       dict_correction[indice] = [pays, info, correction]
       break
     return menu.open_menu.Menu(memory)
