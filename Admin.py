@@ -6,23 +6,54 @@ class Admin (Classe_abstraite1, Class_abstraite2):
     self.id_admin=id_admin
     self.motdepasse_admin=motdepasse_admin
     self.activite_admin = activite_admin
+    
+  def pays_deja (self,pays):
+    return (pays in dico_pays)
   
   def supprimer_pays(self): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
     pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
-    pays_deja=False 
-    while pays_deja==False:
-      if dico_pays.has_key(pays_a_supprimer)==True:
-        pays_deja=True
+    while True: 
+      result=self.pays_deja(pays_a_supprimer)
+      if result==False:
+        print("Le pays n'existe pas. Voulez-vous recommencer ?")
+        print("[1] Oui")
+        print("[2] Non")
+        value2 = input("> ")
+        if value2 in ["2","Non","non","N","n"]:
+          break
       else:
-        pays_a_supprimer = input ("Ce pays n'existe pas, dans notre base de données. Veuillez ressaisir le nom du pays à supprimer")
-    del dico_pays[pays_a_supprimer] # suppression du pays 
-    print("Le pays "+ pays_a_supprimer + est bien supprime")
-    return Menu Principal
+        del dico_pays[pays_a_supprimer] # suppression du pays 
+        print("Le pays "+ pays_a_supprimer + est bien supprime")
+        break
+    return menu.open_menu.Menu(memory)
   
-  def créer_compte(self): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
-    id_newcompte=input("Veuillez renseigner l'id du compte à créer"
-    id_deja=True
-    while id_deja:
-        if 
+  def verifier_compte (self,id):
+    return (id in Liste_comptes) # le dictionnaire des comptes s'appelle Liste_comptes 
+  
+  def ajouter_compte(self, id, mdp, stat): # fonction que l'on va tester
+    Liste_compte["id"]["Mdp"]=mdp
+    Liste_compte["statut"]=stat
+  
+  def créer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
+    id_newcompte=input("Veuillez renseigner l'id du compte à créer")
+    while True: 
+      result=self.verifier_compte(id_newcompte)
+      if result:
+        print("Ce compte existe déjà. Voulez-vous recommencer ?")
+        print("[1] Oui")
+        print("[2] Non")
+        value2 = input("> ")
+        if value2 in ["2","Non","non","N","n"]:
+          break
+      else:
+        mdp_newcompte=input("Quel est le mot de passe de ce nouveau compte ?")
+        statut_newcompte=input("Quel est le statut de ce nouveau compte ?")
+        self.ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte)
+        break
+    return menu.open_menu.Menu(memory)
+        
+        
+    
+     
       
     
