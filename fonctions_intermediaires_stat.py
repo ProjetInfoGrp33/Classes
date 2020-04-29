@@ -1,10 +1,4 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Apr 27 10:43:27 2020
-
-@author: Inès
-"""
-
 # FONCTION INTERMEDIAIRES
 
 # test si le pays est dans la base
@@ -17,19 +11,24 @@ def pays_dans_la_base(donnees,pays):
     else:
         return(True)
 
-def choix_n(nmin=-10000,nmax=100000):
+def choix_n(nmin=-1000000000,nmax=1000000000):
     while True:
         try:
-            n = int(input(" >"))
+            n = int(input(" >"))    
         except ValueError:
             print("Veuillez rentrer un entier svp")
-            continue
+            continue #on retente
         else:
-            break
+            if n<nmin or n>nmax:
+                print("Veuillez rentrer un entier entre {} et {}".format(nmin,nmax))
+                continue #on retente
+            else:
+                break #on sort de la boucle infinie : pas d'erreur
     return(n)
     
+    
  # choix d'une liste de pays
-def choix_pays(donnees,nmax=10000):
+def choix_liste_pays(donnees,nmax=10000):
     liste_pays=[]
     i=1
     Continuer = True
@@ -45,13 +44,37 @@ def choix_pays(donnees,nmax=10000):
         else:
             continue
         print("Voulez vous rajouter un pays? (O/N)")
-        choice= input(' >')
-        if choice in ['O','Oui']:
-            pass
-        else:
-            Continuer=False
+        Continuer=oui_non()
     return(liste_pays)
     
+    
+def choix_pays(donnees):
+    print("Veuillez rentrer le nom du pays")
+    while True:
+        pays_choisi = input("> ")
+        Test=pays_dans_la_base(donnees,pays_choisi)
+        if Test:
+            break
+        else:
+            continue
+    return(pays_choisi)
+    
+
+# reponses Oui Non    
+def oui_non():
+    while True:
+        choice= input(' >')
+        if choice.lower() in ['o','oui']:
+            Continuer=True
+            break
+        elif choice.lower() in ['non','n']:
+            Continuer=False
+            break
+        else:
+            print("Veuillez rentrer O pour Oui ou N pour Non")
+            continue
+    return(Continuer)
+
 # choix du critere parmis la liste
 def choix_critere(donnees): 
     print("Veuillez choisir le critère dans la liste suivante")
@@ -61,15 +84,17 @@ def choix_critere(donnees):
         if i!= "Classes Age":
             print('[{}]'.format(indice),i)
             indice +=1
-    choice = int(input(" >"))
-    
-    critere = liste_criteres(donnees,'France')[choice-1]
+    criteres= liste_criteres(donnees,next(iter(donnees)))
+    choice = choix_n(1,len(criteres)) # on rentre un n entre 1 et 9
+    critere = criteres[choice-1]
     return(critere)
 
 # choix du seuil pour un critere (on donne le min et le max pour aider l'utilisateur) 
 def choix_seuil(donnees,critere):
     liste_critere = liste_critere_donnee(donnees,critere)
-    print("Veuillez taper le seuil (sans unité), les valeurs associées à {} se situe entre {} et {}".format(critere,min(liste_critere),max(liste_critere)))
+    nmin=min(liste_critere)
+    nmax=max(liste_critere)
+    print("Veuillez taper le seuil (sans unité), les valeurs associées à {} se situe entre {} et {}".format(critere, nmin,nmax))
     while True:
         try:
             seuil = input(" >")
@@ -78,7 +103,11 @@ def choix_seuil(donnees,critere):
             print("Erreur: veuillez taper un nombre")
             continue
         else:
-            break
+            if seuil>nmax or seuil<nmin:
+                print("Veuillez taper un nombre entre {} et {}".format(nmin,nmax))
+                continue
+            else:
+                break
     return(seuil)
         
 # liste des criteres["Population","Taux de Chomage" ...]
@@ -127,3 +156,15 @@ def liste_pays(donnees,critere):
             liste.append(i)
     return(liste)
 
+# modification d'une valeur d'un critere (ou proposition de correction)
+def rentrer_valeur_critere():
+    while True:
+        try:
+            correction = input("> ")
+            correction = float(correction)
+        except ValueError:
+            print("Veuillez rentrer un chiffre (avec un point '.' pour la virgule))")
+            continue
+        else:
+            break
+    return(correction)
