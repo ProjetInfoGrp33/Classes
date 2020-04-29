@@ -1,9 +1,9 @@
 from Preconsultant import Preconsultant
 from SuperActeur import SuperActeur
-Class Consultant(SuperActeur, Preconsultant):
+class Consultant(SuperActeur, Preconsultant):
   
-  def __init__(self, id_cons):
-    self.id=id_cons
-    self.Statut=Consultant
-   
+  def __init__(self, statut='Consultant'):
+      SuperActeur.__init__(statut)
+      Preconsultant.__init__()
+      
   
