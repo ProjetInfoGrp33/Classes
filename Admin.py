@@ -1,19 +1,12 @@
-import Classe_abstraite1 from Classe_abstraite1
-import Classe_abstraite2 from Classe_abstraite2
+from Classe_abstraite1 import Classe_abstraite1 
+from Classe_abstraite2 import Classe_abstraite2 
   
-class Admin (Classe_abstraite1, Class_abstraite2):
-  def __init__(id_admin, motdepasse_admin, activite_admin):
-    self.id_admin=id_admin
-    self.motdepasse_admin=motdepasse_admin
-    self.activite_admin = activite_admin
+class Admin (Classe_abstraite1, Classe_abstraite2):
+  def __init__(self,id=None,mdp=None,statut='Administrateur',activite=0):
+      Classe_abstraite1.__init__(id,mdp,statut,activite)
     
-  def pays_deja (self,pays):
-    return (pays in dico_pays)
- 
-  def enlever_pays(self,pays): # fonction que l'on va tester
-    del dico_pays[pays]
   
-  def supprimer_pays(self): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
+  def supprimer_pays(self,memory): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
     while True: 
       pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
       result=self.pays_deja(pays_a_supprimer)
@@ -25,17 +18,10 @@ class Admin (Classe_abstraite1, Class_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        self.enlever_pays(pays_a_supprimer) 
-        print("Le pays "+ pays_a_supprimer + est bien supprime")
+        enlever_pays(pays_a_supprimer) 
+        print("Le pays "+ pays_a_supprimer +" est_bien_supprime")
         break
-    return menu.open_menu.Menu(memory)
-  
-  def verifier_compte (self,id):
-    return (id in Liste_comptes) # le dictionnaire des comptes s'appelle Liste_comptes 
-  
-  def ajouter_compte(self, id, mdp, stat): # fonction que l'on va tester
-    Liste_compte["id"]["Mdp"]=mdp
-    Liste_compte["statut"]=stat
+    return memory
   
   def créer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
     while True: 
@@ -53,15 +39,14 @@ class Admin (Classe_abstraite1, Class_abstraite2):
         statut_newcompte=input("Quel est le statut de ce nouveau compte ?")
         self.ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte)
         break
-    return menu.open_menu.Menu(memory)
+    return memory
   
-  def enlever_compte(self, id): # fonction que l'on va tester 
-    del Liste_compte[id]
+
  
-  def supprimer_compte(self,memory):
+  def supprimer_compte(self,memory,Liste_comptes):
     while True: 
       id_a_supprimer=input("Quel est l'id du compte que vous souhaitez supprimer")
-      result=self.verifier_comte(id_a_supprimer)
+      result=verifier_compte(id_a_supprimer,Liste_comptes)
       if result==False:
         print("Le compte n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
@@ -70,9 +55,27 @@ class Admin (Classe_abstraite1, Class_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        self.enlever_compte(id_a_supprimer)
+        enlever_compte(id_a_supprimer,Liste_comptes)
         break
-    return menu.open_menu.Menu(memory)
+    return memory
+
+#Fonctions hors classe
+      
+def pays_deja (pays,dico_pays):
+    return (pays in dico_pays)
+
+def enlever_compte(id,Liste_compte): # fonction que l'on va tester 
+    del Liste_compte[id]
+    
+def verifier_compte(id,Liste_comptes):
+    return (id in Liste_comptes) # le dictionnaire des comptes s'appelle Liste_comptes 
+
+def ajouter_compte(id, mdp, stat,Liste_compte): # fonction que l'on va tester
+    Liste_compte["id"]["Mdp"]=mdp
+    Liste_compte["statut"]=stat
+    
+def enlever_pays(pays,dico_pays,memory): # fonction que l'on va tester
+    del dico_pays[pays]
     
      
       
