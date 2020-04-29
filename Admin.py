@@ -14,8 +14,8 @@ class Admin (Classe_abstraite1, Class_abstraite2):
     del dico_pays[pays]
   
   def supprimer_pays(self): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
-    pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
     while True: 
+      pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
       result=self.pays_deja(pays_a_supprimer)
       if result==False:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
@@ -38,8 +38,8 @@ class Admin (Classe_abstraite1, Class_abstraite2):
     Liste_compte["statut"]=stat
   
   def créer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
-    id_newcompte=input("Veuillez renseigner l'id du compte à créer")
     while True: 
+      id_newcompte=input("Veuillez renseigner l'id du compte à créer")
       result=self.verifier_compte(id_newcompte)
       if result:
         print("Ce compte existe déjà. Voulez-vous recommencer ?")
@@ -58,9 +58,9 @@ class Admin (Classe_abstraite1, Class_abstraite2):
   def enlever_compte(self, id): # fonction que l'on va tester 
     del Liste_compte[id]
  
-  def supprimer_compte(self,memory)
-    id_a_supprimer=input("Quel est l'id du compte que vous souhaitez supprimer")
+  def supprimer_compte(self,memory):
     while True: 
+      id_a_supprimer=input("Quel est l'id du compte que vous souhaitez supprimer")
       result=self.verifier_comte(id_a_supprimer)
       if result==False:
         print("Le compte n'existe pas. Voulez-vous recommencer ?")
