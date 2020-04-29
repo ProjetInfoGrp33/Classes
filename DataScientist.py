@@ -1,5 +1,6 @@
-Class data_scientist(Consultant, Classe_abstraite1):
-  def __init__(id_ds,motdepasse_ds, activite_ds):
-    self.id_ds=id_ds
-    self.motdepasse_ds=motdepasse_ds
-    self.activite_ds=activite_ds
+from Classe_abstraite1 import Classe_abstraite1
+from Consultant import Consultant
+ 
+class DataScientist(Consultant, Classe_abstraite1):
+  def __init__(self,id=None,mdp=None,activite=0,statut='DataScientist'):
+      Classe_abstraite1.__init__(id,mdp,statut,activite)
