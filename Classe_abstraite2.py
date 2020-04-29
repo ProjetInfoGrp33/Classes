@@ -1,83 +1,85 @@
-import class_abstraite_connexion from class_abstraite_connexion
+from Classe_abstraite_connexion import Classe_abstraite_connexion 
 
-class class_abstraite2 (class_abstraite_connexion):
-  
-  def __init__(self):
-    """ La classe est une classe abstraite"""
-    pass
-  def accepter_refuser_proposition (proposition):
-    """On accepte les propositions disponibles dans le dictionnaire des corrections"""
-    print(proposition)
-    rep_oui_non= input("Acceptez-vous cette proposition ? (O/N)")
-    if rep_oui_non=="O": # Je ne connais la syntaxe des corrections ou propositions 
+class Classe_abstraite2(Classe_abstraite_connexion):
+    def __init__(self,id=None,mdp=None,statut=None,activite=0):
+        """ La classe est une classe abstraite"""
+        Classe_abstraite_connexion.__init__(id,mdp,statut,activite)
     
-    del liste_correction["proposition"] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
-    print("L'operation Accepter ou refuser une proposition est effectuee")
-    return Menu Principal
-  
-  def pays_deja(self,pays):
-    return data.has_key(pays) # le dictionnaire des pays s'appelle data 
-  
-  def ret_ajouter_pays(self): # 
-    nom_pays=input("Quel est le nom du pays que vous souhaitez créer?")
+    def accepter_refuser_proposition (proposition,memory):
+        """On accepte les propositions disponibles dans le dictionnaire des corrections"""
+        print(proposition)
+        rep_oui_non= input("Acceptez-vous cette proposition ? (O/N)")
+        if rep_oui_non=="O": # Je ne connais la syntaxe des corrections ou propositions 
+            del liste_correction["proposition"] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+        print("L'operation Accepter ou refuser une proposition est effectuee")
+        return memory
     
-    if self.pays _deja(nom_pays):
-      supeficie = input("Quelle est la superficie de"+ nom_pays +" ?")
-      population=input ("Quel est le nombre d'habitants de " + nom_pays +" ?")
-      croissance_demographique= input("Quel est le taux de croissance de la population de "+nom_pays +" ?")
-      inflation = input("Quel est le taux d'inflation de "+nom_pays+" ?")
-      dette=input("Quelle est la dette de "+nom_pays+" ?")
-      taux_de_chomage=input("Quel est le taux de chomage de "+nom_pays + " ?")
-      data[nom_pays]={superficie, population, croissance_demographique, inflation, dette, taux de chomage} # ajout du pays dans le dictionnaire
-      return ("Le pays "+nom_pays + " est ajouté")
-    else:
-      return None
+    def pays_deja(self,pays):
+        return data.has_key(pays) # le dictionnaire des pays s'appelle data 
+    
+    def ret_ajouter_pays(self): # 
+        nom_pays=input("Quel est le nom du pays que vous souhaitez créer?")
+    
+        if self.pays_deja(nom_pays):
+            supeficie = input("Quelle est la superficie de"+ nom_pays +" ?")
+            population=input ("Quel est le nombre d'habitants de " + nom_pays +" ?")
+            croissance_demographique= input("Quel est le taux de croissance de la population de "+nom_pays +" ?")
+            inflation = input("Quel est le taux d'inflation de "+nom_pays+" ?")
+            dette=input("Quelle est la dette de "+nom_pays+" ?")
+            taux_de_chomage=input("Quel est le taux de chomage de "+nom_pays + " ?")
+            data[nom_pays]={"Superficie":superficie, "Population":population, "Croissance Démographique":croissance_demographique, "Inflation":inflation, "Dette":dette, "Chomage":taux_de_chomage} # ajout du pays dans le dictionnaire
+            return ("Le pays "+nom_pays + " est ajouté")
+        else:
+            return None
    
-  def ajouter_pays(self):
-    while True: 
-      result=self.ret_ajouter_pays()
-      if result==None:
-        print("Le pays n'existe pas. Voulez-vous recommencer ?")
-        print("[1] Oui")
-        print("[2] Non")
-        value2 = input("> ")
-        if value2 in ["2","Non","non","N","n"]:
-          break
-      else:
-        print(result)
-        break
-    return menu.open_menu.Menu(memory)
+    def ajouter_pays(self,memory):
+        while True: 
+            result=self.ret_ajouter_pays()
+            if result==None:
+                print("Le pays n'existe pas. Voulez-vous recommencer ?")
+                print("[1] Oui")
+                print("[2] Non")
+                value2 = input("> ")
+                if value2 in ["2","Non","non","N","n"]:
+                    break
+            else:
+                print(result)
+                break
+        return memory
     
     
     
   
-  def modifier_pays(self):
-    nom_pays=input("Quel pays souhaitez-vous modifier les informations ?")
-    while True:
-      result=pays_deja(nom_pays)
-      if not result:
-        print("Le pays n'existe pas. Voulez-vous recommencer ?")
-        print("[1] Oui")
-        print("[2] Non")
-        value2 = input("> ")
-        if value2 in ["2","Non","non","N","n"]:
-          break
-      else:
-        liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
+    def modifier_pays(self,memory):
+        nom_pays=input("Quel pays souhaitez-vous modifier les informations ?")
+        while True:
+            result=pays_deja(nom_pays)
+            if not result:
+                print("Le pays n'existe pas. Voulez-vous recommencer ?")
+                print("[1] Oui")
+                print("[2] Non")
+                value2 = input("> ")
+                if value2 in ["2","Non","non","N","n"]:
+                    break
+                else:
+                    continue
+            else:
+                liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
                         "taux de chomage", "taux de dépenses", "taux de depenses en sante", "taux de depense en education",
                         "taux de depenses militaires", "cinq classes d'age"]
-        for i in len(liste_informations): # on demande quelle information l'utilisateur souhaite modifier 
-          print(str("["i+1"]"+liste_informations[i]))
+                
+                for i in len(liste_informations): # on demande quelle information l'utilisateur souhaite modifier 
+                    print("["+ str(i+1) +"]" + str(liste_informations[i]))
           
-        indice=input("Quelle information souhaitez-vous modifier ?")
-        info_a_modifier=liste_information[indice-1]
-        print("Voici l'information actuelle que vous souhaitez modifier.")
-        print(dico_pays[nom_pays][info_a_modifier])
-    
-        new_info=input("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
-        dico_pays[pays][liste_information[indice-1]]=new_info
-        print("L'information ("+ info_a_modifier+ ") du pays" pays "a été modifié")
-        return Menu Principal
+                indice=input("Quelle information souhaitez-vous modifier ?")
+                info_a_modifier=liste_information[indice-1]
+                print("Voici l'information actuelle que vous souhaitez modifier.")
+                print(dico_pays[nom_pays][info_a_modifier])
+                
+                new_info=input("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
+                dico_pays[pays][liste_information[indice-1]]=new_info
+                print("L'information (" + info_a_modifier + ") du pays" + pays + "a été modifié")
+        return memory
     
     
     
