@@ -1,4 +1,4 @@
-from fonctions_intermediaires_stat import liste_criteres, liste_classes_age, choix_pays
+from fonctions_intermediaires_stat import  choix_pays, afficher_infos
 class SuperActeur():
   def __init__(self):
     pass
@@ -27,14 +27,6 @@ def ret_afficher_pays(pays,dict_pays): # ce sera la fonction que l'on testera
       return dict_pays[pays]
     else:
       return None
+  
 
-def afficher_infos(dict_pays,pays):
-    criteres=liste_criteres(dict_pays,pays)
-    classes= liste_classes_age(dict_pays)
-    for critere in criteres:
-        print(critere + " : " + str(dict_pays[pays][critere]))
-    print("Classes d'age (pourcentage de la population):")
-    for classe in classes:
-        print(classe + " : " + str(dict_pays[pays]['Classes Age'][classe]))
     
-
