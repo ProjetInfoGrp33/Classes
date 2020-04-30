@@ -6,7 +6,7 @@ def pays_dans_la_base(donnees,pays):
     try:
         donnees[pays]
     except KeyError:
-        print("Le pays ne se trouve pas dans la base, réessayer")
+        print("Le pays ne se trouve pas dans la base")
         return(False)
     else:
         return(True)
@@ -56,7 +56,13 @@ def choix_pays(donnees):
         if Test:
             break
         else:
-            continue
+            print("Voulez vous réessayer ? (O/N)")
+            choice = oui_non()
+            if choice:
+                continue
+            else:
+                pays_choisi=None
+                break
     return(pays_choisi)
     
 
@@ -76,19 +82,31 @@ def oui_non():
     return(Continuer)
 
 # choix du critere parmis la liste
-def choix_critere(donnees): 
+def choix_critere(donnees,classes=False): 
     print("Veuillez choisir le critère dans la liste suivante")
     indice=1
     pays='France'
     for i in donnees[pays].keys():
-        if i!= "Classes Age":
+        if i!= "Classes Age" or classes :
             print('[{}]'.format(indice),i)
             indice +=1
-    criteres= liste_criteres(donnees,next(iter(donnees)))
+    criteres= liste_criteres(donnees,next(iter(donnees)),classes)
     choice = choix_n(1,len(criteres)) # on rentre un n entre 1 et 9
     critere = criteres[choice-1]
     return(critere)
-
+    
+    
+# choix d'une proposition parmis une liste
+def choix_proposition(liste_correction): 
+    print("Veuillez choisir une correction dans la liste suivante")
+    indice=1
+    for i in liste_correction:
+        print('[{}]'.format(indice),i)
+        indice +=1
+    choice = choix_n(1,len(liste_correction)) # on rentre un n entre 1 et le nb de corrections
+    indice_proposition = choice-1
+    return(indice_proposition)
+    
 # choix du seuil pour un critere (on donne le min et le max pour aider l'utilisateur) 
 def choix_seuil(donnees,critere):
     liste_critere = liste_critere_donnee(donnees,critere)
@@ -111,10 +129,12 @@ def choix_seuil(donnees,critere):
     return(seuil)
         
 # liste des criteres["Population","Taux de Chomage" ...]
-def liste_criteres(donnees,pays): 
+def liste_criteres(donnees,pays=0, classes=False): 
+    if pays==0:
+        pays = next(iter(donnees))
     criteres=[]
     for i in donnees[pays].keys():
-        if i!='Classes Age':
+        if i!='Classes Age' or classes:
             criteres.append(i)
     return(criteres)
     
@@ -157,7 +177,7 @@ def liste_pays(donnees,critere):
     return(liste)
 
 # modification d'une valeur d'un critere (ou proposition de correction)
-def rentrer_valeur_critere():
+def rentrer_valeur_critere(nmin=None,nmax=None):
     while True:
         try:
             correction = input("> ")
@@ -165,6 +185,14 @@ def rentrer_valeur_critere():
         except ValueError:
             print("Veuillez rentrer un chiffre (avec un point '.' pour la virgule))")
             continue
-        else:
+        else: # conditions sur nmin, nmax
+            if nmin is not None and nmax is None and correction<nmin:
+                print("Veuillez rentrer un chiffre plus grand que {}".format(nmin) )
+                continue
+            elif nmin is None and nmax is not None and correction>nmax:
+                print("Veuillez rentrer un chiffre plus petit que {}".format(nmax))
+            elif nmin is not None and nmax is not None and (correction<nmin or correction>nmax):
+                print("Veuillez rentrer un chiffre entre {} et {}".format(nmin,nmax))
             break
+    
     return(correction)
