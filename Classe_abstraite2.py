@@ -1,5 +1,5 @@
 from Classe_abstraite_connexion import Classe_abstraite_connexion 
-from fonctions_intermediaires_stat import choix_proposition, choix_pays,liste_classes_age, liste_criteres, valeurs_classes_age, choix_critere, rentrer_valeur_critere
+from fonctions_intermediaires_stat import choix_proposition, choix_pays,liste_classes_age, rentrer_valeurs_classes_age, rentrer_pays, liste_criteres, valeurs_classes_age, choix_critere, rentrer_valeur_critere
 import pandas
 
 class Classe_abstraite2(Classe_abstraite_connexion):
@@ -80,44 +80,9 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             print("L'information " + critere_a_modifier + " du pays " + nom_pays + " a été modifié")
         return memory
     
-
 #fonctions hors classe
-    
 def pays_dans_la_base(donnees,pays):
     return pays in donnees
     
-   
-def rentrer_pays(donnees):
-    while True: 
-        print("Veuillez rentrer le nom du pays que vous souhaitez créer:")
-        pays=input(" >")
-        if pays_dans_la_base(donnees,pays):
-            print("Le pays existe déjà. Voulez-vous recommencer ?")
-            print("[1] Oui")
-            print("[2] Non")
-            value2 = input("> ")
-            if value2 in ["2","Non","non","N","n"]:
-                pays=None
-                break
-            else:
-                continue
-        else:
-            break
-    return pays
-    
-def rentrer_valeurs_classes_age(donnees,pays): #changer (ajouter) valeur pour les classes d'age
-    print("Classes d'ages (pourcentage dans la population, entre 0 et 1)")
-    classes= liste_classes_age(donnees)
-    while True:
-        somme=0
-        for classe in classes:
-            print("Veuillez rentrer la valeur de {} ".format(classe))
-            valeur = rentrer_valeur_critere(0,1)
-            donnees[pays]['Classes Age'][classe]=valeur
-            print("Valeur pour {} : {}".format(classe,valeur))
-            somme += valeur
-        if somme !=1:
-            print("La somme ne fait pas 1, veuillez retaper les valeurs")
-            continue
-        else:
-            break
+
+
