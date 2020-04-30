@@ -1,87 +1,111 @@
 from Classe_abstraite_connexion import Classe_abstraite_connexion 
+from fonctions_intermediaires_stat import choix_proposition, choix_pays, liste_criteres, choix_critere
 
 class Classe_abstraite2(Classe_abstraite_connexion):
-    def __init__(self,id=None,mdp=None,statut=None,activite=0):
+    def __init__(self,identifiant=None,mdp=None,statut=None,activite=0):
         """ La classe est une classe abstraite"""
-        Classe_abstraite_connexion.__init__(id,mdp,statut,activite)
+        Classe_abstraite_connexion.__init__(self,identifiant,mdp,statut,activite)
     
-    def accepter_refuser_proposition (proposition,memory):
+    def accepter_refuser_proposition(self,donnees,liste_correction,memory=" "):
         """On accepte les propositions disponibles dans le dictionnaire des corrections"""
-        print(proposition)
-        rep_oui_non= input("Acceptez-vous cette proposition ? (O/N)")
-        if rep_oui_non=="O": # Je ne connais la syntaxe des corrections ou propositions 
-            del liste_correction["proposition"] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
-        print("L'operation Accepter ou refuser une proposition est effectuee")
-        return memory
-    
-    def pays_deja(self,pays):
-        return data.has_key(pays) # le dictionnaire des pays s'appelle data 
-    
-    def ret_ajouter_pays(self): # 
-        nom_pays=input("Quel est le nom du pays que vous souhaitez créer?")
-    
-        if self.pays_deja(nom_pays):
-            supeficie = input("Quelle est la superficie de"+ nom_pays +" ?")
-            population=input ("Quel est le nombre d'habitants de " + nom_pays +" ?")
-            croissance_demographique= input("Quel est le taux de croissance de la population de "+nom_pays +" ?")
-            inflation = input("Quel est le taux d'inflation de "+nom_pays+" ?")
-            dette=input("Quelle est la dette de "+nom_pays+" ?")
-            taux_de_chomage=input("Quel est le taux de chomage de "+nom_pays + " ?")
-            data[nom_pays]={"Superficie":superficie, "Population":population, "Croissance Démographique":croissance_demographique, "Inflation":inflation, "Dette":dette, "Chomage":taux_de_chomage} # ajout du pays dans le dictionnaire
-            return ("Le pays "+nom_pays + " est ajouté")
+        indice_proposition = choix_proposition(liste_correction)# l'utilisateur choisit la proposition qu'il veut
+        proposition = liste_correction[indice_proposition] # proposition correspondante
+        print("Proposition choisie : ", proposition)
+        
+        print("Acceptez vous cette proposition? Oui : O, Non : N, Ne rien faire : touche Entrée")
+        rep_oui_non = input(" >")
+        
+        if rep_oui_non.upper() in ['OUI','O']:
+            pays = proposition[0]
+            critere=proposition[1]
+            valeur=proposition[2]
+            donnees[pays][critere]=valeur # on modifie le critere choisie par la modif
+            del liste_correction[indice_proposition] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            print("Modification effectuée avec succès")
+            
+        elif rep_oui_non.upper() in ['NON','N']:
+            del liste_correction[indice_proposition] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            print("Proposition effacée.")
         else:
-            return None
-   
-    def ajouter_pays(self,memory):
-        while True: 
-            result=self.ret_ajouter_pays()
-            if result==None:
-                print("Le pays n'existe pas. Voulez-vous recommencer ?")
-                print("[1] Oui")
-                print("[2] Non")
-                value2 = input("> ")
-                if value2 in ["2","Non","non","N","n"]:
-                    break
-            else:
-                print(result)
-                break
+            print("Opération annulée") # on touche à rien
         return memory
     
+
+    
+    def ajouter_pays(self,donnees,memory): # 
+        #on rentre le nom du pays a ajouter
+        nom_pays=rentrer_pays(donnees)
+        if nom_pays is None:
+            print("Procédure annulée")
+        else:  
+            criteres = liste_criteres(donnees)
+            donnees[nom_pays]={}
+            # on demande la valeur a rentrer pour chaque critere
+            for i in criteres:
+                while True:
+                    try:
+                        print("Veuillez rentrer la valeur de {} (nombre avec un point '.' pour la virgule)".format(i))
+                        valeur = float(input(" >"))
+                    except ValueError:
+                        print("Veuillez rentrer un entier avec un '.' pour la virgule")
+                        continue
+                    else:
+                        # on ajoute la donnée
+                        donnees[nom_pays][i]=valeur
+                        print("Valeur pour {} : {}".format(i,valeur))
+                        break      
+            # cas des classes d'ages a rajouter
+            
+        return memory
     
     
   
-    def modifier_pays(self,memory):
-        nom_pays=input("Quel pays souhaitez-vous modifier les informations ?")
-        while True:
-            result=pays_deja(nom_pays)
-            if not result:
-                print("Le pays n'existe pas. Voulez-vous recommencer ?")
-                print("[1] Oui")
-                print("[2] Non")
-                value2 = input("> ")
-                if value2 in ["2","Non","non","N","n"]:
-                    break
-                else:
+    def modifier_pays(self,dico_pays,memory):
+        print("Quel pays souhaitez-vous modifier les informations ?")
+        nom_pays = choix_pays(dico_pays)
+        if nom_pays is None:
+            print("Procédure annulée")
+        else:
+            print("Quelle information souhaitez vous modifier?")
+            critere_a_modifier= choix_critere(dico_pays)
+            print("Voici l'information actuelle que vous souhaitez modifier.")
+            print(dico_pays[nom_pays][critere_a_modifier])
+            while True:
+                try:
+                    print("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
+                    new_info=float(input(" >"))
+                except ValueError:
+                    print("Veuillez rentrer un nombre, avec un '.' pour la virgule")
                     continue
-            else:
-                liste_informations=["Superficie","Nombre d'habitants", "Taux de croissance de la population", "Taux d'inflation", "Dette",
-                        "taux de chomage", "taux de dépenses", "taux de depenses en sante", "taux de depense en education",
-                        "taux de depenses militaires", "cinq classes d'age"]
-                
-                for i in len(liste_informations): # on demande quelle information l'utilisateur souhaite modifier 
-                    print("["+ str(i+1) +"]" + str(liste_informations[i]))
-          
-                indice=input("Quelle information souhaitez-vous modifier ?")
-                info_a_modifier=liste_information[indice-1]
-                print("Voici l'information actuelle que vous souhaitez modifier.")
-                print(dico_pays[nom_pays][info_a_modifier])
-                
-                new_info=input("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
-                dico_pays[pays][liste_information[indice-1]]=new_info
-                print("L'information (" + info_a_modifier + ") du pays" + pays + "a été modifié")
+                else:
+                    break
+            dico_pays[nom_pays][critere_a_modifier]=new_info
+            print("L'information " + critere_a_modifier + " du pays " + nom_pays + " a été modifié")
         return memory
     
+
+#fonctions hors classe
     
+def pays_dans_la_base(donnees,pays):
+    return pays in donnees
     
+   
+def rentrer_pays(donnees):
+    while True: 
+        print("Veuillez rentrer le nom du pays que vous souhaitez créer:")
+        pays=input(" >")
+        if pays_dans_la_base(donnees,pays):
+            print("Le pays existe déjà. Voulez-vous recommencer ?")
+            print("[1] Oui")
+            print("[2] Non")
+            value2 = input("> ")
+            if value2 in ["2","Non","non","N","n"]:
+                pays=None
+                break
+            else:
+                continue
+        else:
+            break
+    return pays
     
-    
+
