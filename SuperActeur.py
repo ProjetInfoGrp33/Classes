@@ -1,26 +1,17 @@
+from fonctions_intermediaires_stat import liste_criteres, liste_classes_age, choix_pays
 class SuperActeur():
-  def __init__(self,statut):
-    self.statut=statut
-    
+  def __init__(self):
+    pass
 
   def afficher_pays(self,dict_pays, memory):
-    while True: 
-        print("Entrer le nom du pays à afficher (première lettre majuscule, puis lettres minuscules) :")
-        pays = input("> ")
-        result=ret_afficher_pays(pays,dict_pays)
-        if result==None:
-            print("Le pays n'existe pas. Voulez-vous recommencer ?")
-            print("[1] Oui")
-            print("[2] Non")
-            value2 = input("> ")
-            if value2 in ["2","Non","non","N","n"]:
-                break
-            else:
-                continue
-        else:
-            print(dict_pays[pays])
-            break
-    return memory #open_menu.Menu(memory)
+      print("Affichage des informations sur un pays:")
+      #choix du pays
+      pays = choix_pays(dict_pays)
+      if pays is None:
+          print("Procédure arrêtée")
+      else: # affichage des infos sur le pays choisi
+          afficher_infos(dict_pays,pays)
+      return memory #open_menu.Menu(memory)
   
   
   def set_indices_taches(self,indice_taches):
@@ -37,4 +28,13 @@ def ret_afficher_pays(pays,dict_pays): # ce sera la fonction que l'on testera
     else:
       return None
 
-  
+def afficher_infos(dict_pays,pays):
+    criteres=liste_criteres(dict_pays,pays)
+    classes= liste_classes_age(dict_pays)
+    for critere in criteres:
+        print(critere + " : " + str(dict_pays[pays][critere]))
+    print("Classes d'age (pourcentage de la population):")
+    for classe in classes:
+        print(classe + " : " + str(dict_pays[pays]['Classes Age'][classe]))
+    
+
