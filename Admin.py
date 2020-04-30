@@ -9,7 +9,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
   def supprimer_pays(self,memory): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
     while True: 
       pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
-      result=self.pays_deja(pays_a_supprimer)
+      result=pays_deja(pays_a_supprimer)
       if result==False:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
