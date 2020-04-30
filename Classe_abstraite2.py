@@ -1,5 +1,6 @@
 from Classe_abstraite_connexion import Classe_abstraite_connexion 
-from fonctions_intermediaires_stat import choix_proposition, choix_pays, liste_criteres, choix_critere
+from fonctions_intermediaires_stat import choix_proposition, choix_pays,liste_classes_age, liste_criteres, valeurs_classes_age, choix_critere, rentrer_valeur_critere
+import pandas
 
 class Classe_abstraite2(Classe_abstraite_connexion):
     def __init__(self,identifiant=None,mdp=None,statut=None,activite=0):
@@ -42,20 +43,14 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             donnees[nom_pays]={}
             # on demande la valeur a rentrer pour chaque critere
             for i in criteres:
-                while True:
-                    try:
-                        print("Veuillez rentrer la valeur de {} (nombre avec un point '.' pour la virgule)".format(i))
-                        valeur = float(input(" >"))
-                    except ValueError:
-                        print("Veuillez rentrer un entier avec un '.' pour la virgule")
-                        continue
-                    else:
-                        # on ajoute la donnée
-                        donnees[nom_pays][i]=valeur
-                        print("Valeur pour {} : {}".format(i,valeur))
-                        break      
-            # cas des classes d'ages a rajouter
-            
+                print("Veuillez rentrer la valeur de {} ".format(i))
+                valeur = rentrer_valeur_critere()
+                donnees[nom_pays][i]=valeur
+                print("Valeur pour {} : {}".format(i,valeur))
+            # cas particulier des classes d'age
+            donnees[nom_pays]['Classes Age']={}
+            rentrer_valeurs_classes_age(donnees,nom_pays)
+            # est-ce qu'on fait confirmer à chaque saisie?
         return memory
     
     
@@ -67,19 +62,21 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             print("Procédure annulée")
         else:
             print("Quelle information souhaitez vous modifier?")
-            critere_a_modifier= choix_critere(dico_pays)
-            print("Voici l'information actuelle que vous souhaitez modifier.")
-            print(dico_pays[nom_pays][critere_a_modifier])
-            while True:
-                try:
-                    print("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
-                    new_info=float(input(" >"))
-                except ValueError:
-                    print("Veuillez rentrer un nombre, avec un '.' pour la virgule")
-                    continue
-                else:
-                    break
-            dico_pays[nom_pays][critere_a_modifier]=new_info
+            critere_a_modifier= choix_critere(dico_pays,True)
+            if critere_a_modifier !='Classes Age':
+                print("Voici l'information actuelle que vous souhaitez modifier.")
+                print(dico_pays[nom_pays][critere_a_modifier])
+                print("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
+                new_info=rentrer_valeur_critere()
+                dico_pays[nom_pays][critere_a_modifier]=new_info
+            else:
+                print("Voici l'information actuelle que vous souhaitez modifier.")
+                tableau=valeurs_classes_age(dico_pays,[nom_pays])
+                classes= liste_classes_age(dico_pays)
+                dataframe= pandas.DataFrame(data=tableau, columns=classes,index=[nom_pays])
+                pandas.set_option("display.max_rows", None, "display.max_columns", None)
+                print(dataframe)                
+                rentrer_valeurs_classes_age(dico_pays,nom_pays)
             print("L'information " + critere_a_modifier + " du pays " + nom_pays + " a été modifié")
         return memory
     
@@ -108,4 +105,19 @@ def rentrer_pays(donnees):
             break
     return pays
     
-
+def rentrer_valeurs_classes_age(donnees,pays): #changer (ajouter) valeur pour les classes d'age
+    print("Classes d'ages (pourcentage dans la population, entre 0 et 1)")
+    classes= liste_classes_age(donnees)
+    while True:
+        somme=0
+        for classe in classes:
+            print("Veuillez rentrer la valeur de {} ".format(classe))
+            valeur = rentrer_valeur_critere(0,1)
+            donnees[pays]['Classes Age'][classe]=valeur
+            print("Valeur pour {} : {}".format(classe,valeur))
+            somme += valeur
+        if somme !=1:
+            print("La somme ne fait pas 1, veuillez retaper les valeurs")
+            continue
+        else:
+            break
