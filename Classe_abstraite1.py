@@ -1,7 +1,7 @@
 from Classe_abstraite_connexion import Classe_abstraite_connexion
 import pandas
 import numpy as np
-from fonctions_intermediaires_stat import  choix_n , choix_liste_pays , choix_critere , choix_seuil , liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
+from fonctions_intermediaires_stat import  choix_n , choix_liste_pays , choix_critere , choix_seuil ,oui_non, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
 import matplotlib.pyplot as plt
 
 
@@ -35,9 +35,28 @@ class Classe_abstraite1(Classe_abstraite_connexion):
 ### pays_dans_la_base , choix_n , choix_pays , choix_critere , choix_seuil , liste_criteres, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays##
 
 ############### FONCTIONS FINALES
-def affichage_critere(donnees): # affiche criteres en un tableau pandas 
+def affichage_critere(donnees,liste_pays=None): # affiche criteres en un tableau pandas 
     print('Affichage des 9 informations sur une liste de pays choisis')
-    liste_pays= choix_liste_pays(donnees)
+    #Choix des pays 
+    if liste_pays is None:
+        liste_pays= choix_liste_pays(donnees)
+    else:
+        #on cheack que tous les pays de la liste sont dans la base de donnees, sinon on les enleve
+        for pays in liste_pays:
+            if not(pays in donnees):
+                liste_pays.remove(pays)
+        #affichage de la liste
+        print("Voici une liste pré-établie de pays :")
+        i=0
+        for pays in liste_pays:
+            i+=1
+            print("[{}] {}".format(i,pays))
+        print("Voulez vous garder ces pays? (O/N)")
+        rep_oui_non = oui_non()
+        if not(rep_oui_non):# réponse Non
+            liste_pays=choix_liste_pays(donnees) # il rentre les pays un à un (pas de possibilité de modifier juste quelques pays)
+    
+    # Création tableau avec les infos (une ligne par pays)
     tableau = []
     for pays in liste_pays:
         criteres=[]
@@ -49,6 +68,7 @@ def affichage_critere(donnees): # affiche criteres en un tableau pandas
         tableau.append(liste_critere)
     dataframe= pandas.DataFrame(data=tableau, columns=criteres,index=liste_pays)
     pandas.set_option("display.max_rows", None, "display.max_columns", None)
+    #on affiche ce tableau
     print(dataframe)
     input("Tapez sur Entrée pour continuer")
 
@@ -146,4 +166,24 @@ def boxplot_age(donnees):
     dataframe.boxplot(column=classes)
     
     input("Tapez sur Entrée pour continuer")
+
+def ines(donnees): #fonction correlation entre 2 variables
+    print("Coefficient de corrélation entre 2 critères choisis")
+    #on choisit les 2 pays 
+    print(" ------- ")
+    print("Critere numéro 1")
+    critere1= choix_critere(donnees)
+    print(" ------- ")
+    print("Critere numéro 2")
+    critere2 = choix_critere(donnees)
+    
+    # Attention ici on prends uniquement les valeurs non NA pour les DEUX criteres simultannemment
+    liste_critere1 = liste_critere_donnee(donnees,critere1,critere2) # liste des valeurs pour le critere 1
+    liste_critere2 = liste_critere_donnee(donnees,critere2,critere1) #liste des valeurs pour le critere 2
+    correlation = np.corrcoef(liste_critere1,liste_critere2)[0,1]
+    print("Le coefficient de correlation entre {} et {} est de {}".format(critere1,critere2,correlation))
+    
+    
+    
+
     
