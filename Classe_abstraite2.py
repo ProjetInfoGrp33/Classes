@@ -1,5 +1,5 @@
-from Classe_abstraite_connexion import Classe_abstraite_connexion 
-from fonctions_intermediaires_stat import choix_proposition, choix_pays,liste_classes_age, rentrer_valeurs_classes_age, rentrer_pays, liste_criteres, valeurs_classes_age, choix_critere, rentrer_valeur_critere
+from ClassesActeur.Classe_abstraite_connexion import Classe_abstraite_connexion 
+from ClassesActeur.fonctions_intermediaires_stat import choix_proposition, choix_pays,liste_classes_age, rentrer_valeurs_classes_age, rentrer_pays, liste_criteres, valeurs_classes_age, choix_critere, rentrer_valeur_critere
 import pandas
 
 class Classe_abstraite2(Classe_abstraite_connexion):
