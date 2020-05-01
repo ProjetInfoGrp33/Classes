@@ -1,7 +1,7 @@
-from Classe_abstraite_connexion import Classe_abstraite_connexion
+from ClassesActeur.Classe_abstraite_connexion import Classe_abstraite_connexion
 import pandas
 import numpy as np
-from fonctions_intermediaires_stat import  choix_n , choix_liste_pays , choix_critere , choix_seuil ,oui_non, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
+from ClassesActeur.fonctions_intermediaires_stat import  choix_n , choix_liste_pays , choix_critere , choix_seuil ,oui_non, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
 import matplotlib.pyplot as plt
 
 
