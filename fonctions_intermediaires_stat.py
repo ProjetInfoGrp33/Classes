@@ -161,20 +161,25 @@ def valeurs_classes_age(donnees,pays=None):
     return(tableau)
     
  # liste des valeurs pour un critere donné (sans NA)
-def liste_critere_donnee(donnees,critere):
-    resultat=[]
-    for i in donnees.keys():
-        if donnees[i][critere] != None:
-            resultat.append(donnees[i][critere])
-    return(resultat)
-    
-# liste des pays où le critere choisi n'est pas NA
-def liste_pays(donnees,critere):
+def liste_critere_donnee(donnees,critere,critere2=None):
     liste=[]
     for i in donnees.keys():
-        if donnees[i][critere]!= None:
+        #si on qu'un critere : on regarde si c'est pas un NA pour le pays i
+        # si on a 2 criteres : on regarde si les 2 criteres sont pas NA
+        if (critere2 is None and donnees[i][critere]!= None) or (critere2 is not None and donnees[i][critere]!=None and donnees[i][critere2]!=None):
+            liste.append(donnees[i][critere])
+    return(liste)
+    
+# liste des pays où le critere choisi n'est pas NA (ajout du critere 2 pour la fonction "Ines")
+def liste_pays(donnees,critere,critere2=None):
+    liste=[]
+    for i in donnees.keys():
+        #si on qu'un critere : on regarde si c'est pas un NA pour le pays i
+        # si on a 2 criteres : on regarde si les 2 criteres sont pas NA
+        if (critere2 is None and donnees[i][critere]!= None) or (critere2 is not None and donnees[i][critere]!=None and donnees[i][critere2]!=None):
             liste.append(i)
     return(liste)
+
 
 # modification d'une valeur d'un critere (ou proposition de correction)
 def rentrer_valeur_critere(nmin=None,nmax=None):
@@ -224,7 +229,7 @@ def afficher_infos(dict_pays,pays):
     for critere in criteres:
         print(critere + " : " + str(dict_pays[pays][critere]))
     print("Classes d'age (pourcentage de la population):")
-    for classe in classes:
+    for classe in classes: 
         print(classe + " : " + str(dict_pays[pays]['Classes Age'][classe]))
 
 #rentre les valeurs pour les classes d'ages pour un pays donnée 
