@@ -1,8 +1,7 @@
 from fonctions_intermediaires_stat import choix_critere , rentrer_valeur_critere, choix_pays
 
 def __init__(self, statut='Consultant'):
-      SuperActeur.__init__(self,statut)
-      Preconsultant.__init__(self)
+      pass
       
   def proposer_correction(self,memory,dict_pays,dict_correction):
       pays = choix_pays(dict_pays)
