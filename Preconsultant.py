@@ -1,6 +1,7 @@
 from ClassesActeur.fonctions_intermediaires_stat import choix_critere , rentrer_valeur_critere, choix_pays
 
-def __init__(self, statut='Consultant'):
+class Preconsultant():
+  def __init__(self, statut='Consultant'):
       pass
       
   def proposer_correction(self,memory,dict_pays,liste_correction):
