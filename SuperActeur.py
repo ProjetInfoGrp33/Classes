@@ -15,14 +15,17 @@ class SuperActeur():
     set_indices_taches(indicetache)
         La liste des taches accessibles donnée est rentré en attribut, et redonné en sortie.
     """
-    def __init__(self,indicetache=None):
-        self.indicetache=indicetache
+    def __init__(self):
+        """ Constructeur : crée un SuperActeur
+        Parameters
+        -----------
+        null
+        
+        Returns
+        -----------
+        null
         """
-        Parametres
-        ----------
-        name : list
-            les indices correspondants aux taches accessibles par l'acteur (pour le déroulement des menus)
-        """
+        pass
 
     def afficher_pays(self,dict_pays, memory=' '):
         """Affiche les 10 informations sur un pays.
@@ -60,8 +63,8 @@ class SuperActeur():
         list
             La liste des indices des taches autorisées donnée en paramètre.
         """
-        self.indicetache=indice_taches
-        return(self.indicetache)
+        #self.indicetache=indice_taches
+        return(indice_taches)
   
 #fonctions hors classe
 def verifier_pays(pays, dict_pays):# pour verifier que les pays sont dans le dictionnaire des pays 
