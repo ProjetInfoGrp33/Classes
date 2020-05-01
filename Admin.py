@@ -1,5 +1,5 @@
-from Classe_abstraite1 import Classe_abstraite1 
-from Classe_abstraite2 import Classe_abstraite2 
+from ClassesActeur.Classe_abstraite1 import Classe_abstraite1 
+from ClassesActeur.Classe_abstraite2 import Classe_abstraite2 
   
 class Admin (Classe_abstraite1, Classe_abstraite2):
   def __init__(self,id=None,mdp=None,statut='Administrateur',activite=0):
