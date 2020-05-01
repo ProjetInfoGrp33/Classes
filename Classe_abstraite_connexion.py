@@ -1,7 +1,7 @@
-from SuperActeur import SuperActeur
-#from Geographe import Geographe
-#from DataScientist import DataScientist
-#from Administrateur import Administrateur 
+from ClassesActeur.SuperActeur import SuperActeur
+from ClassesActeur.Geographe import Geographe
+from ClassesActeur.DataScientist import DataScientist
+from ClassesActeur.Admin import Admin
 
 class Classe_abstraite_connexion(SuperActeur):
 
