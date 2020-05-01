@@ -167,22 +167,7 @@ def boxplot_age(donnees):
     
     input("Tapez sur Entrée pour continuer")
 
-def ines(donnees): #fonction correlation entre 2 variables
-    print("Coefficient de corrélation entre 2 critères choisis")
-    #on choisit les 2 pays 
-    print(" ------- ")
-    print("Critere numéro 1")
-    critere1= choix_critere(donnees)
-    print(" ------- ")
-    print("Critere numéro 2")
-    critere2 = choix_critere(donnees)
-    
-    # Attention ici on prends uniquement les valeurs non NA pour les DEUX criteres simultannemment
-    liste_critere1 = liste_critere_donnee(donnees,critere1,critere2) # liste des valeurs pour le critere 1
-    liste_critere2 = liste_critere_donnee(donnees,critere2,critere1) #liste des valeurs pour le critere 2
-    correlation = np.corrcoef(liste_critere1,liste_critere2)[0,1]
-    print("Le coefficient de correlation entre {} et {} est de {}".format(critere1,critere2,correlation))
-    
+
     
     
 
