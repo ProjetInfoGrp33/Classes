@@ -1,4 +1,4 @@
-from fonctions_intermediaires_stat import  choix_pays, afficher_infos
+from ClassesActeur.fonctions_intermediaires_stat import  choix_pays, afficher_infos
 class SuperActeur():
     """
     Classe SuperActeur : Tous les acteurs en héritent : Admin, DataScientist, Géographe et Consultant
