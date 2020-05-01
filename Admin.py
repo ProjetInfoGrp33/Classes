@@ -19,7 +19,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
           break
       else:
         enlever_pays(pays_a_supprimer,dico_pays) 
-        print("Le pays "+ pays_a_supprimer +" est_bien_supprime")
+        print("Le pays "+ pays_a_supprimer +" est bien supprimé")
         break
     return memory
   
