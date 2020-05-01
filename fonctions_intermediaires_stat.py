@@ -10,8 +10,8 @@
 ###############################################"
 # # # # # FONCTIONS DE CHOIX (DANS UNE LISTE)
 def choix_pays(donnees):
-    print("Veuillez rentrer le nom du pays")
     while True:
+        print("Veuillez rentrer le nom du pays")
         pays_choisi = input("> ")
         Test=pays_dans_la_base(donnees,pays_choisi)
         if Test:
