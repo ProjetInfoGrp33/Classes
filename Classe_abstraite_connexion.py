@@ -5,11 +5,10 @@ from ClassesActeur.Admin import Admin
 
 class Classe_abstraite_connexion(SuperActeur):
 
-  def __init__(self,id=None,mdp=None,statut=None,activite=0):
+  def __init__(self,id=None,mdp=None):
     self.id=id
     self.mdp=mdp
-    self.statut=statut
-    self.activite=activite
+
     
   def connexion(self,dict_compte):
     print("Entrer votre identifiant:")
@@ -24,9 +23,9 @@ class Classe_abstraite_connexion(SuperActeur):
     print ("Entrer votre mot de passe :")
     while True:
       value2=input("> ")
-      if str(value2)==dict_compte[value]["Mdp"] : 
+      mdp= dict_compte[value]["Mdp"] 
+      if str(value2)==mdp: 
         print("Connexion réussie !")
-        self.activite=1
         break
       else :
         print("Le mot de passe est incorrect. Voulez-vous recommencer ?")
@@ -37,15 +36,10 @@ class Classe_abstraite_connexion(SuperActeur):
           return(None, None)
         print ("Entrer votre mot de passe :")
         continue
-    if dict_compte[value]["Statut"]=="Geographe":
-      return("geographe crée")#Geographe(value,dict_compte[value]["Mdp"],dict_compte[value]["Statut"],1) , "indice_taches_geo"
-    if dict_compte[value]["Statut"]=="DataScientist":
-      return("data scientist cree") #DataScientist(value,dict_compte[value]["mdp"],dict_compte[value]["Statut"],1), "indice_taches_ds"
-    if dict_compte[value]["Statut"]=="Administrateur":
-      return("admin crée" )#Administrateur(value,dict_compte[value]["mdp"],dict_compte[value]["Statut"],1), "indice_taches_admin"
-  
+    statut= dict_compte[value]["Statut"]
+    return(value,mdp,statut)
+    
   def deconnexion(self):
     print ("Au Revoir")
-    self.activite=0
     #on supprime peut etre l'acteur crée?
     
