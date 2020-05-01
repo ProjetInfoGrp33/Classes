@@ -1,4 +1,4 @@
-from fonctions_intermediaires_stat import choix_critere , rentrer_valeur_critere, choix_pays
+from ClassesActeur.fonctions_intermediaires_stat import choix_critere , rentrer_valeur_critere, choix_pays
 
 def __init__(self, statut='Consultant'):
       pass
