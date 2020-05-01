@@ -2,6 +2,7 @@ from ClassesActeur.SuperActeur import SuperActeur
 from ClassesActeur.Geographe import Geographe
 from ClassesActeur.DataScientist import DataScientist
 from ClassesActeur.Admin import Admin
+from ClassesActeur.fonctions_intermediaires_stat import oui_non
 
 class Classe_abstraite_connexion(SuperActeur):
 
@@ -28,11 +29,9 @@ class Classe_abstraite_connexion(SuperActeur):
         print("Connexion réussie !")
         break
       else :
-        print("Le mot de passe est incorrect. Voulez-vous recommencer ?")
-        print("[1] Oui")
-        print("[2] Non")
-        value2 = input("> ")
-        if value2 in ["2","Non","N","non","n"]:
+        print("Le mot de passe est incorrect. Voulez-vous recommencer ? (O/N)")
+        value2 = oui_non()
+        if not(value2):
           return(None, None)
         print ("Entrer votre mot de passe :")
         continue
@@ -42,4 +41,3 @@ class Classe_abstraite_connexion(SuperActeur):
   def deconnexion(self):
     print ("Au Revoir")
     #on supprime peut etre l'acteur crée?
-    
