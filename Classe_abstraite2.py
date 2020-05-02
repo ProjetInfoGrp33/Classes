@@ -21,11 +21,12 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             critere=proposition[1]
             valeur=proposition[2]
             donnees[pays][critere]=valeur # on modifie le critere choisie par la modif
-            del liste_correction[indice_proposition] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            supprimer (indice_proposition, liste_correction) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            
             print("Modification effectuée avec succès")
             
         elif rep_oui_non.upper() in ['NON','N']:
-            del liste_correction[indice_proposition] # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            supprimer (indice_proposition, liste_correction) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
             print("Proposition effacée.")
         else:
             print("Opération annulée") # on touche à rien
@@ -83,6 +84,8 @@ class Classe_abstraite2(Classe_abstraite_connexion):
 #fonctions hors classe
 def pays_dans_la_base(donnees,pays):
     return pays in donnees
-    
+
+def supprimer_proposition(liste_prop, indice):
+    del liste_prop[indice]
 
 
