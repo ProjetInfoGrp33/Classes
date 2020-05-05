@@ -86,7 +86,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
 def pays_dans_la_base(donnees,pays):
     return pays in donnees
 
-def supprimer_proposition(liste_prop, indice):
+def supprimer_proposition(indice, liste_prop):
     del liste_prop[indice]
 
 
