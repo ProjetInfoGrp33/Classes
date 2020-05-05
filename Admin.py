@@ -1,5 +1,6 @@
 from ClassesActeur.Classe_abstraite1 import Classe_abstraite1 
-from ClassesActeur.Classe_abstraite2 import Classe_abstraite2 
+from ClassesActeur.Classe_abstraite2 import Classe_abstraite2
+from Menus.open_menu import Menu
   
 class Admin (Classe_abstraite1, Classe_abstraite2):
   def __init__(self,id=None,mdp=None,statut='Administrateur'):
@@ -21,7 +22,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         enlever_pays(pays_a_supprimer,memory["data"]) 
         print("Le pays "+ pays_a_supprimer +" est bien supprimé")
         break
-    return memory
+    return Menu(memory)
   
   def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
     while True: 
@@ -39,7 +40,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         statut_newcompte=input("Quel est le statut de ce nouveau compte ? ")
         ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte,memory["Liste_comptes"])
         break
-    return memory
+    return Menu(memory)
   
 
  
@@ -58,7 +59,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         enlever_compte(id_a_supprimer,memory["Liste_comptes"])
         print("Compte {} supprimé".format(id_a_supprimer))
         break
-    return memory
+    return Menu(memory)
 
 #Fonctions hors classe
       
