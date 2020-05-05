@@ -6,10 +6,10 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       Classe_abstraite1.__init__(self,id,mdp,statut,activite)
     
   
-  def supprimer_pays(self,memory,dico_pays): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
+  def supprimer_pays(self,memory): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
     while True: 
       pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
-      result=pays_deja(pays_a_supprimer,dico_pays)
+      result=pays_deja(pays_a_supprimer,memory["data"])
       if result==False:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
@@ -18,15 +18,15 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        enlever_pays(pays_a_supprimer,dico_pays) 
+        enlever_pays(pays_a_supprimer,memory["data"]) 
         print("Le pays "+ pays_a_supprimer +" est bien supprimé")
         break
     return memory
   
-  def créer_compte(self, memory,liste_comptes): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
+  def créer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
     while True: 
       id_newcompte=input("Veuillez renseigner l'id du compte à créer ")
-      result= verifier_compte(id_newcompte,liste_comptes)
+      result= verifier_compte(id_newcompte,memory["Liste_comptes"])
       if result:
         print("Ce compte existe déjà. Voulez-vous recommencer ?")
         print("[1] Oui")
@@ -37,16 +37,16 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       else:
         mdp_newcompte=input("Quel est le mot de passe de ce nouveau compte ? ")
         statut_newcompte=input("Quel est le statut de ce nouveau compte ? ")
-        ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte,liste_comptes)
+        ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte,memory["Liste_comptes"])
         break
     return memory
   
 
  
-  def supprimer_compte(self,memory,Liste_comptes):
+  def supprimer_compte(self,memory):
     while True: 
       id_a_supprimer=input("Quel est l'id du compte que vous souhaitez supprimer ")
-      result=verifier_compte(id_a_supprimer,Liste_comptes)
+      result=verifier_compte(id_a_supprimer,memory["Liste_comptes"])
       if result==False:
         print("Le compte n'existe pas. Voulez-vous recommencer ?")
         print("[1] Oui")
@@ -55,7 +55,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        enlever_compte(id_a_supprimer,Liste_comptes)
+        enlever_compte(id_a_supprimer,memory["Liste_comptes"])
         print("Compte {} supprimé".format(id_a_supprimer))
         break
     return memory
