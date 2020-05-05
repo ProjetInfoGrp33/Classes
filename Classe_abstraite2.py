@@ -3,9 +3,9 @@ from ClassesActeur.fonctions_intermediaires_stat import choix_proposition, choix
 import pandas
 
 class Classe_abstraite2(Classe_abstraite_connexion):
-    def __init__(self,identifiant=None,mdp=None,statut=None,activite=0):
+    def __init__(self,identifiant=None,mdp=None,statut=None):
         """ La classe est une classe abstraite"""
-        Classe_abstraite_connexion.__init__(self,identifiant,mdp,statut,activite)
+        Classe_abstraite_connexion.__init__(self,identifiant,mdp,statut)
     
     def accepter_refuser_proposition(self,memory):
         """On accepte les propositions disponibles dans le dictionnaire des corrections"""
