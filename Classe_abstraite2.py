@@ -22,12 +22,12 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             critere=proposition[1]
             valeur=proposition[2]
             memory["data"][pays][critere]=valeur # on modifie le critere choisie par la modif
-            supprimer (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
             
             print("Modification effectuée avec succès")
             
         elif rep_oui_non.upper() in ['NON','N']:
-            supprimer (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+            supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
             print("Proposition effacée.")
         else:
             print("Opération annulée") # on touche à rien
