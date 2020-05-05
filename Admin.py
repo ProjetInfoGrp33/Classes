@@ -9,7 +9,8 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
   
   def supprimer_pays(self,memory): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
     while True: 
-      pays_a_supprimer=input("Quel pays souhaitez-vous supprimer ?")
+      print("Quel pays souhaitez-vous supprimer ?")
+      pays_a_supprimer=input(">")
       result=pays_deja(pays_a_supprimer,memory["data"])
       if result==False:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
@@ -64,9 +65,12 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        enlever_compte(id_a_supprimer,memory["Liste_comptes"])
-        print("Compte {} supprimé".format(id_a_supprimer))
-        break
+        print("Etes-vous sur de vouloir supprimer ce compte ? (O/N)") 
+        sur=input(">")
+        if sur in ["o", "O", "oui", "Oui"]:
+          enlever_compte(id_a_supprimer,memory["Liste_comptes"])
+          print("Compte {} supprimé".format(id_a_supprimer))
+          break
     return Menu(memory)
 
 #Fonctions hors classe
