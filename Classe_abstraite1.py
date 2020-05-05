@@ -3,6 +3,7 @@ import pandas
 import numpy as np
 from ClassesActeur.fonctions_intermediaires_stat import  choix_n , choix_liste_pays , choix_critere , choix_seuil ,oui_non, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
 import matplotlib.pyplot as plt
+from Menus.open_menu import Menu
 
 
 class Classe_abstraite1(Classe_abstraite_connexion):
@@ -21,13 +22,13 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         seuil(memory["data"])
         print("--------------------------")
         tableau_classes_age(memory["data"])
-        return(memory)
+        return Menu(memory)
     
     def representation_graphique(self,memory):
         diagramme_barre(memory["data"])
         print("--------------------------")
         boxplot_age(memory["data"])
-        return(memory)
+        return Menu(memory)
     
     def ines(self, memory): #fonction correlation entre 2 variables
         print("Coefficient de corrélation entre 2 critères choisis")
@@ -44,7 +45,7 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         liste_critere2 = liste_critere_donnee(memory["data"],critere2,critere1) #liste des valeurs pour le critere 2
         correlation = np.corrcoef(liste_critere1,liste_critere2)[0,1]
         print("Le coefficient de correlation entre {} et {} est de {}".format(critere1,critere2,correlation))
-        return(memory)
+        return Menu(memory)
         
 
 ############### LES 6 FONCTIONS A L'INTERIEUR 
