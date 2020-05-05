@@ -1,4 +1,5 @@
 from ClassesActeur.fonctions_intermediaires_stat import choix_critere , rentrer_valeur_critere, choix_pays
+from Menus.open_menu import Menu
 
 class Preconsultant():
   def __init__(self, statut='Consultant'):
@@ -11,4 +12,4 @@ class Preconsultant():
       print ("Entrer le contenu de la correction :")
       correction = rentrer_valeur_critere()
       memory["Corrections"].append([pays, critere, correction])
-      return memory  #menu.open_menu.Menu(memory)
+      return Menu(memory)  #Menus.open_menu.Menu(memory)
