@@ -4,11 +4,11 @@ class Preconsultant():
   def __init__(self, statut='Consultant'):
       pass
       
-  def proposer_correction(self,memory,dict_pays,liste_correction):
-      pays = choix_pays(dict_pays)
+  def proposer_correction(self,memory):
+      pays = choix_pays(memory["data"])
       print ("Choix du critere a modifier")
-      critere = choix_critere(dict_pays)
+      critere = choix_critere(memory["data"])
       print ("Entrer le contenu de la correction :")
       correction = rentrer_valeur_critere()
-      liste_correction.append = [pays, critere, correction]
+      memory["Corrections"].append = [pays, critere, correction]
       return memory  #menu.open_menu.Menu(memory)
