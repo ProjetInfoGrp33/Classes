@@ -19,9 +19,12 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        enlever_pays(pays_a_supprimer,memory["data"]) 
-        print("Le pays "+ pays_a_supprimer +" est bien supprimé")
-        break
+        print("Etes-vous sûr de vouloir supprimer le pays "+ pays_a_supprimer + "? (O/N)")
+        sur=input(">")
+        if sur in ["oui", "o", "O", "Oui"]:
+          enlever_pays(pays_a_supprimer,memory["data"]) 
+          print("Le pays "+ pays_a_supprimer +" est bien supprimé")
+          break
     return Menu(memory)
   
   def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
