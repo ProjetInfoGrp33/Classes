@@ -29,7 +29,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
     return Menu(memory)
   
   def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
-    liste_statue=["Geographe", "Data Scientist", "Admin"]
+    liste_statut=["Geographe", "Data Scientist", "Admin"]
     while True: 
       id_newcompte=input("Veuillez renseigner l'id du compte à créer ")
       result= verifier_compte(id_newcompte,memory["Liste_comptes"])
