@@ -1,6 +1,7 @@
 from ClassesActeur.Classe_abstraite_connexion import Classe_abstraite_connexion 
 from ClassesActeur.fonctions_intermediaires_stat import choix_proposition, choix_pays,liste_classes_age, rentrer_valeurs_classes_age, rentrer_pays, liste_criteres, valeurs_classes_age, choix_critere, rentrer_valeur_critere
 import pandas
+from Menus.open_menu import Menu
 
 class Classe_abstraite2(Classe_abstraite_connexion):
     def __init__(self,identifiant=None,mdp=None,statut=None):
@@ -30,7 +31,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             print("Proposition effacée.")
         else:
             print("Opération annulée") # on touche à rien
-        return memory
+        return Menu(memory)
     
 
     
@@ -52,7 +53,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             memory["data"][nom_pays]['Classes Age']={}
             rentrer_valeurs_classes_age(memory["data"],nom_pays)
             # est-ce qu'on fait confirmer à chaque saisie?
-        return memory
+        return Menu(memory)
     
     
   
@@ -79,7 +80,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
                 print(dataframe)                
                 rentrer_valeurs_classes_age(memory["data"],nom_pays)
             print("L'information " + critere_a_modifier + " du pays " + nom_pays + " a été modifié")
-        return memory
+        return Menu(memory)
     
 #fonctions hors classe
 def pays_dans_la_base(donnees,pays):
