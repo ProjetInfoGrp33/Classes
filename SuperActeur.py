@@ -1,4 +1,5 @@
 from ClassesActeur.fonctions_intermediaires_stat import  choix_pays, afficher_infos
+from Menus.open_menu import Menu
 class SuperActeur():
     """
     Classe SuperActeur : Tous les acteurs en héritent : Admin, DataScientist, Géographe et Consultant
@@ -49,7 +50,7 @@ class SuperActeur():
             print("Procédure arrêtée")           
         else: # affichage des infos sur le pays choisi
             afficher_infos(memory["data"],pays)
-        return memory #open_menu.Menu(memory)
+        return Menu(memory) #open_menu.Menu(memory)
   
     def set_indices_taches(self,indice_taches):
         """La liste des taches accessibles donnée est rentré en attribut, et redonné en sortie.
