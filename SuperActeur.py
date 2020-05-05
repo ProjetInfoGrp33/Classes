@@ -27,7 +27,7 @@ class SuperActeur():
         """
         pass
 
-    def afficher_pays(self,dict_pays, memory=' '):
+    def afficher_pays(self,memory):
         """Affiche les 10 informations sur un pays.
 
         Parametres
@@ -44,11 +44,11 @@ class SuperActeur():
         """
         print("Affichage des informations sur un pays:")
         #choix du pays
-        pays = choix_pays(dict_pays)
+        pays = choix_pays(memory["data"])
         if pays is None:
             print("Procédure arrêtée")           
         else: # affichage des infos sur le pays choisi
-            afficher_infos(dict_pays,pays)
+            afficher_infos(memory["data"],pays)
         return memory #open_menu.Menu(memory)
   
     def set_indices_taches(self,indice_taches):
