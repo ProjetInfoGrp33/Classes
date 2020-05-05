@@ -9,39 +9,39 @@ class Classe_abstraite1(Classe_abstraite_connexion):
     def __init__(self,id=None,mdp=None,statut=None,activite=0):
         Classe_abstraite_connexion.__init__(self,id,mdp,statut,activite)
   
-    def resume_informations(self,donnees,memory): # créer un menu pour choisir dans les actions proposées
+    def resume_informations(self,memory): # créer un menu pour choisir dans les actions proposées
         # n premiers/derniers pays pour 1 critere 
         # les pays dont critere depasse un seuil
         # tableau des classes d'ages (10 max)
         
-        affichage_critere(donnees)
+        affichage_critere(memory["data"])
         print("--------------------------")
-        premiers_derniers(donnees)
+        premiers_derniers(memory["data"])
         print("--------------------------")
-        seuil(donnees)
+        seuil(memory["data"])
         print("--------------------------")
-        tableau_classes_age(donnees)
+        tableau_classes_age(memory["data"])
         return(memory)
     
-    def representation_graphique(self,donnees,memory):
-        diagramme_barre(donnees)
+    def representation_graphique(self,memory):
+        diagramme_barre(memory["data"])
         print("--------------------------")
-        boxplot_age(donnees)
+        boxplot_age(memory["data"])
         return(memory)
     
-    def ines(self, memory, donnees): #fonction correlation entre 2 variables
+    def ines(self, memory): #fonction correlation entre 2 variables
         print("Coefficient de corrélation entre 2 critères choisis")
         #on choisit les 2 pays 
         print(" ------- ")
         print("Critere numéro 1")
-        critere1= choix_critere(donnees)
+        critere1= choix_critere(memory["data"])
         print(" ------- ")
         print("Critere numéro 2")
-        critere2 = choix_critere(donnees)
+        critere2 = choix_critere(memory["data"])
 
         # Attention ici on prends uniquement les valeurs non NA pour les DEUX criteres simultannemment
-        liste_critere1 = liste_critere_donnee(donnees,critere1,critere2) # liste des valeurs pour le critere 1
-        liste_critere2 = liste_critere_donnee(donnees,critere2,critere1) #liste des valeurs pour le critere 2
+        liste_critere1 = liste_critere_donnee(memory["data"],critere1,critere2) # liste des valeurs pour le critere 1
+        liste_critere2 = liste_critere_donnee(memory["data"],critere2,critere1) #liste des valeurs pour le critere 2
         correlation = np.corrcoef(liste_critere1,liste_critere2)[0,1]
         print("Le coefficient de correlation entre {} et {} est de {}".format(critere1,critere2,correlation))
         return(memory)
