@@ -3,9 +3,10 @@ from ClassesActeur.fonctions_intermediaires_stat import oui_non
 
 class Classe_abstraite_connexion(SuperActeur):
 
-  def __init__(self,id=None,mdp=None):
+  def __init__(self,id=None,mdp=None,statut=None):
     self.id=id
     self.mdp=mdp
+    self.statut=statut
 
     
   def connexion(self,memory):
