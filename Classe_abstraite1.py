@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 
 class Classe_abstraite1(Classe_abstraite_connexion):
     def __init__(self,id=None,mdp=None,statut=None):
-        Classe_abstraite_connexion.__init__(self,id,mdp,statut,activite)
+        Classe_abstraite_connexion.__init__(self,id,mdp,statut)
   
     def resume_informations(self,memory): # créer un menu pour choisir dans les actions proposées
         # n premiers/derniers pays pour 1 critere 
