@@ -10,8 +10,8 @@ class Classe_abstraite_connexion(SuperActeur):
 
     
   def connexion(self,memory):
-    print("Entrer votre identifiant:")
     while True:
+      print("Entrer votre identifiant:")
       value=input("> ")
       if value not in memory["Liste_comptes"]:
         print("Identifiant inexistant, voulez-vous réessayer ?")
