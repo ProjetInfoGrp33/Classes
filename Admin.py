@@ -2,8 +2,8 @@ from ClassesActeur.Classe_abstraite1 import Classe_abstraite1
 from ClassesActeur.Classe_abstraite2 import Classe_abstraite2 
   
 class Admin (Classe_abstraite1, Classe_abstraite2):
-  def __init__(self,id=None,mdp=None,statut='Administrateur',activite=0):
-      Classe_abstraite1.__init__(self,id,mdp,statut,activite)
+  def __init__(self,id=None,mdp=None,statut='Administrateur'):
+      Classe_abstraite1.__init__(self,id,mdp,statut)
     
   
   def supprimer_pays(self,memory): # j'appelle, par la suite, "dico_pays" le dictionnaire des pays
