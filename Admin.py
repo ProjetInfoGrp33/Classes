@@ -43,7 +43,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       else:
         print("Quel est le mot de passe de ce nouveau compte ? ")
         mdp_newcompte=input(">")
-        for i in range(len(liste_statut):
+        for i in range(len(liste_statut)):
           print("["+str(i+1)+"]" + liste_statut[i])
         print("Quel est le statut de ce nouveau compte ?")
         statut_newcompte=input(">")
