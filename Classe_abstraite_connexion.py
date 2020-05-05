@@ -1,7 +1,4 @@
 from ClassesActeur.SuperActeur import SuperActeur
-from ClassesActeur.Geographe import Geographe
-from ClassesActeur.DataScientist import DataScientist
-from ClassesActeur.Admin import Admin
 from ClassesActeur.fonctions_intermediaires_stat import oui_non
 
 class Classe_abstraite_connexion(SuperActeur):
