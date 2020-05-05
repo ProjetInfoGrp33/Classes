@@ -32,6 +32,7 @@ class Classe_abstraite_connexion(SuperActeur):
       else :
         i+=1
         if i>3:
+          print("Le mot de passe est incorrect")
           print("3 essais non concluants : la connexion est abandonnée")
           return (None, None, "Consultant")
         print("Le mot de passe est incorrect. Voulez-vous recommencer ? (O/N)")
