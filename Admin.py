@@ -23,7 +23,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         break
     return memory
   
-  def créer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
+  def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
     while True: 
       id_newcompte=input("Veuillez renseigner l'id du compte à créer ")
       result= verifier_compte(id_newcompte,memory["Liste_comptes"])
