@@ -28,6 +28,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
     return Menu(memory)
   
   def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
+    liste_statue=["Geographe", "Data Scientist", "Admin"]
     while True: 
       id_newcompte=input("Veuillez renseigner l'id du compte à créer ")
       result= verifier_compte(id_newcompte,memory["Liste_comptes"])
@@ -39,9 +40,13 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         if value2 in ["2","Non","non","N","n"]:
           break
       else:
-        mdp_newcompte=input("Quel est le mot de passe de ce nouveau compte ? ")
-        statut_newcompte=input("Quel est le statut de ce nouveau compte ? ")
-        ajouter_compte(id_newcompte, mdp_newcompte, statut_newcompte,memory["Liste_comptes"])
+        print("Quel est le mot de passe de ce nouveau compte ? ")
+        mdp_newcompte=input(">")
+        for i in range(len(liste_statut):
+          print("["+str(i+1)+"]" + liste_statut[i])
+        print("Quel est le statut de ce nouveau compte ?")
+        statut_newcompte=input(">")
+        ajouter_compte(id_newcompte, mdp_newcompte, liste_statut[statut_newcompte-1],memory["Liste_comptes"])
         break
     return Menu(memory)
   
