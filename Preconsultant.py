@@ -10,5 +10,5 @@ class Preconsultant():
       critere = choix_critere(memory["data"])
       print ("Entrer le contenu de la correction :")
       correction = rentrer_valeur_critere()
-      memory["Corrections"].append = [pays, critere, correction]
+      memory["Corrections"].append([pays, critere, correction])
       return memory  #menu.open_menu.Menu(memory)
