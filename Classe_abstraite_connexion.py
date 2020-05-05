@@ -14,12 +14,15 @@ class Classe_abstraite_connexion(SuperActeur):
     while True:
       value=input("> ")
       if value not in memory["Liste_comptes"]:
-        print("Identifiant inexistant, veuillez réessayer")
-        continue
+        print("Identifiant inexistant, voulez-vous réessayer ?")
+        rep = oui_non()
+        if not(rep):
+           return (None, None, Consultant)
       else:
         break
     
     print ("Entrer votre mot de passe :")
+    i=1
     while True:
       value2=input("> ")
       mdp= memory["Liste_comptes"][value]["Mdp"] 
@@ -27,10 +30,14 @@ class Classe_abstraite_connexion(SuperActeur):
         print("Connexion réussie !")
         break
       else :
+        i+=1
+        if i>3:
+          print("3 essais non concluants : la connexion est abandonnée")
+          return (None, None, Consultant)
         print("Le mot de passe est incorrect. Voulez-vous recommencer ? (O/N)")
         value2 = oui_non()
         if not(value2):
-          return(None, None)
+          return(None, None, Consultant)
         print ("Entrer votre mot de passe :")
         continue
     statut= memory["Liste_comptes"][value]["Statut"]
