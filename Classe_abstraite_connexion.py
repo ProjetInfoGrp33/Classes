@@ -11,11 +11,11 @@ class Classe_abstraite_connexion(SuperActeur):
     self.mdp=mdp
 
     
-  def connexion(self,dict_compte):
+  def connexion(self,memory):
     print("Entrer votre identifiant:")
     while True:
       value=input("> ")
-      if value not in dict_compte:
+      if value not in memory["Liste_comptes"]:
         print("Identifiant inexistant, veuillez réessayer")
         continue
       else:
@@ -24,7 +24,7 @@ class Classe_abstraite_connexion(SuperActeur):
     print ("Entrer votre mot de passe :")
     while True:
       value2=input("> ")
-      mdp= dict_compte[value]["Mdp"] 
+      mdp= memory["Liste_comptes"][value]["Mdp"] 
       if str(value2)==mdp: 
         print("Connexion réussie !")
         break
@@ -35,7 +35,7 @@ class Classe_abstraite_connexion(SuperActeur):
           return(None, None)
         print ("Entrer votre mot de passe :")
         continue
-    statut= dict_compte[value]["Statut"]
+    statut= memory["Liste_comptes"][value]["Statut"]
     return(value,mdp,statut)
     
   def deconnexion(self):
