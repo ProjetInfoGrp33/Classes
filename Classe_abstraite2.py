@@ -10,27 +10,30 @@ class Classe_abstraite2(Classe_abstraite_connexion):
     
     def accepter_refuser_proposition(self,memory):
         """On accepte les propositions disponibles dans le dictionnaire des corrections"""
-        indice_proposition = choix_proposition(memory["Corrections"])# l'utilisateur choisit la proposition qu'il veut
-        proposition = memory["Corrections"][indice_proposition] # proposition correspondante
-        print("Proposition choisie : ", proposition)
-        
-        print("Acceptez vous cette proposition? Oui : O, Non : N, Ne rien faire : touche Entrée")
-        rep_oui_non = input(" >")
-        
-        if rep_oui_non.upper() in ['OUI','O']:
-            pays = proposition[0]
-            critere=proposition[1]
-            valeur=proposition[2]
-            memory["data"][pays][critere]=valeur # on modifie le critere choisie par la modif
-            supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
-            
-            print("Modification effectuée avec succès")
-            
-        elif rep_oui_non.upper() in ['NON','N']:
-            supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
-            print("Proposition effacée.")
+        if len(memory["Corrections"])!=0:
+            indice_proposition = choix_proposition(memory["Corrections"])# l'utilisateur choisit la proposition qu'il veut
+            proposition = memory["Corrections"][indice_proposition] # proposition correspondante
+            print("Proposition choisie : ", proposition)
+
+            print("Acceptez vous cette proposition? Oui : O, Non : N, Ne rien faire : touche Entrée")
+            rep_oui_non = input(" >")
+
+            if rep_oui_non.upper() in ['OUI','O']:
+                pays = proposition[0]
+                critere=proposition[1]
+                valeur=proposition[2]
+                memory["data"][pays][critere]=valeur # on modifie le critere choisie par la modif
+                supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+
+                print("Modification effectuée avec succès")
+
+            elif rep_oui_non.upper() in ['NON','N']:
+                supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
+                print("Proposition effacée.")
+            else:
+                print("Opération annulée") # on touche à rien
         else:
-            print("Opération annulée") # on touche à rien
+            print("Il n'y a aucune proposition de corrections")
         return Menu(memory)
     
 
