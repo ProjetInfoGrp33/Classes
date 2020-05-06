@@ -50,6 +50,7 @@ class SuperActeur():
             print("Procédure arrêtée")           
         else: # affichage des infos sur le pays choisi
             afficher_infos(memory["data"],pays)
+        input("Tapez sur Entrée pour continuer")
         return Menu(memory) #open_menu.Menu(memory)
   
     def set_indices_taches(self,indice_taches):
