@@ -4,6 +4,7 @@ import numpy as np
 from ClassesActeur.fonctions_intermediaires_stat import  choix_n , choix_liste_pays , choix_critere , choix_seuil ,oui_non, liste_classes_age , liste_critere_donnee, valeurs_classes_age, liste_pays
 import matplotlib.pyplot as plt
 from Menus.open_menu import Menu
+from ClassesActeur.graph2d import graph2d
 
 
 class Classe_abstraite1(Classe_abstraite_connexion):
@@ -45,6 +46,18 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         liste_critere2 = liste_critere_donnee(memory["data"],critere2,critere1) #liste des valeurs pour le critere 2
         correlation = np.corrcoef(liste_critere1,liste_critere2)[0,1]
         print("Le coefficient de correlation entre {} et {} est de {}".format(critere1,critere2,correlation))
+        input("Tapez sur Entrée pour continuer")
+        return Menu(memory)
+    
+    def erwan(self,memory): # graphe 2d
+        graph2d(memory["data"])
+        input("Tapez sur Entrée pour continuer")
+        return Menu(memory)
+    
+    def justin(self,memory):
+        return Menu(memory)
+    
+    def cluster(self,memory):
         return Menu(memory)
         
 
