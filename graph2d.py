@@ -1,11 +1,12 @@
 import matplotlib.pyplot as plt
 
-def graph2d(self, dico_pays, memory):
+def graph2d( dico_pays):
+  print("Graphe entre 2 variables")
   liste_info=["Superficie", "Population", "Croissance démographique", "Inflation", "Dette", "Taux de Chomage", "Taux de Dépenses Santé", 
               "Taux de Dépenses Education", "Taux de Dépenses Militaire"]
+  print("Quelle variable souhaitez-vous mettre en abscisse ?")
   for i in range(len(liste_info)):
     print("["+str(i+1)+"]"+liste_info[i])
-  print("Quelle variable souhaitez-vous mettre en abscisse ?")
   indice_info_x=input(">")
   info_x=liste_info[int(indice_info_x)-1]
   x=[]
@@ -15,10 +16,9 @@ def graph2d(self, dico_pays, memory):
   rangs_x=[]
   for j in range(len(x)):
     rangs_x.append(x_croissant.index(x[j]))
-    
-  for k in range(liste_info):
-    print("["+str(k+1)+"]"+liste_info[k])
   print("Quelle variable souhaitez-vous mettre en ordonné ?")
+  for k in range(len(liste_info)):
+    print("["+str(k+1)+"]"+liste_info[k])
   indice_info_y=input(">")
   info_y=liste_info[int(indice_info_y)-1]
   y=[]
@@ -39,6 +39,7 @@ def graph2d(self, dico_pays, memory):
   plt.ylabel(info_y)
   
   plt.show()
+  plt.close()
   
   
               
