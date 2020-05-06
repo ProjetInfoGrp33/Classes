@@ -70,28 +70,3 @@ def Kmeans(donnees,n_cluster=3):
     print("L'axe 1 est expliqué majoritairement par {} et {}".format(var1[-1],var1[-2]))
     print("L'axe 2 est expliqué majoritairement par {} et {}".format(var2[-1],var2[-2]))
 
-    #return kmeans.labels_,Z
-
-
-
-# =============================================================================
-#  #=============================================================================
-#  # détermination du nombre de classes
-#  #librairie pour évaluation des partitions
-# from sklearn import metrics
-#  #utilisation de la métrique "silhouette"
-#  #faire varier le nombre de clusters de 2 à 10
-# res = np.arange(5,dtype="double")
-# for k in np.arange(5):
-#     labels, Zk = Kmeans(donnees,k+2)
-#     res[k] = metrics.silhouette_score(Zk,labels)
-# print(res)
-#  #graphique
-# import matplotlib.pyplot as plt
-# plt.title("Silhouette")
-# plt.xlabel("# of clusters")
-# plt.plot(np.arange(2,7,1),res)
-# plt.show()
-#  # on prends donc 4 classes
-# # =============================================================================
-# =============================================================================
