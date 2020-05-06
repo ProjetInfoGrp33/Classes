@@ -14,7 +14,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       pays_a_supprimer=input(">")
       result=pays_deja(pays_a_supprimer,memory["data"])
       if result==False:
-        print("Le pays n'existe pas. Voulez-vous recommencer ?")
+        print("Le pays n'existe pas. Voulez-vous recommencer ? (O/N)")
         value2 = oui_non()
         if not(value2):
           break
@@ -60,7 +60,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       id_a_supprimer=input(">")
       result=verifier_compte(id_a_supprimer,memory["Liste_comptes"])
       if result==False:
-        print("Le compte n'existe pas. Voulez-vous recommencer ?")
+        print("Le compte n'existe pas. Voulez-vous recommencer ? (O/N)")
         value2 = oui_non()
         if not(value2):
           break
@@ -95,3 +95,4 @@ def ajouter_compte(id, mdp, stat,Liste_compte): # fonction que l'on va tester
 def enlever_pays(pays,dico_pays): # fonction que l'on va tester
     del dico_pays[pays]
       
+    
