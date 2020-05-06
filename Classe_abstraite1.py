@@ -5,6 +5,7 @@ from ClassesActeur.fonctions_intermediaires_stat import  choix_n , choix_liste_p
 import matplotlib.pyplot as plt
 from Menus.open_menu import Menu
 from ClassesActeur.graph2d import graph2d
+from ClassesActeur.cluster import Kmeans
 
 
 class Classe_abstraite1(Classe_abstraite_connexion):
@@ -58,6 +59,11 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         return Menu(memory)
     
     def cluster(self,memory):
+        print("Clustering des pays en fonction des critères")
+        print("Veuillez rentrer le nombre de classes souhaitées")
+        n_cluster = choix_n(2,6)
+        Kmeans(memory["data"],n_cluster)
+        input("Tapez sur Entrée pour continuer")
         return Menu(memory)
         
 
