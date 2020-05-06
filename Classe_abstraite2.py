@@ -34,6 +34,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
                 print("Opération annulée") # on touche à rien
         else:
             print("Il n'y a aucune proposition de corrections")
+        input("Tapez sur Entrée pour continuer")
         return Menu(memory)
     
 
@@ -56,6 +57,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
             memory["data"][nom_pays]['Classes Age']={}
             rentrer_valeurs_classes_age(memory["data"],nom_pays)
             # est-ce qu'on fait confirmer à chaque saisie?
+        input("Tapez sur Entrée pour continuer")
         return Menu(memory)
     
     
@@ -83,6 +85,8 @@ class Classe_abstraite2(Classe_abstraite_connexion):
                 print(dataframe)                
                 rentrer_valeurs_classes_age(memory["data"],nom_pays)
             print("L'information " + critere_a_modifier + " du pays " + nom_pays + " a été modifié")
+        
+        input("Tapez sur Entrée pour continuer")
         return Menu(memory)
     
 #fonctions hors classe
