@@ -171,6 +171,9 @@ def diagramme_barre(donnees):
     plt.xlabel('{} (échelle logarithmique)'.format(critere))
     plt.title('Diagramme en barre')
     plt.show()
+    plt.close()
+    input("Tapez sur Entrée pour continuer")
+
 
 def boxplot_age(donnees):
     print("Boxplot de la répartition de la population par classes d'age")
@@ -182,6 +185,8 @@ def boxplot_age(donnees):
     dataframe= pandas.DataFrame(data=valeurs, columns=classes)
     #on sort le boxplot pour toutes les variables 
     dataframe.boxplot(column=classes)
+    plt.show()
+    plt.close()
     
     input("Tapez sur Entrée pour continuer")
 
