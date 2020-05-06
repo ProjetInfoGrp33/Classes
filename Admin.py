@@ -1,5 +1,6 @@
 from ClassesActeur.Classe_abstraite1 import Classe_abstraite1 
 from ClassesActeur.Classe_abstraite2 import Classe_abstraite2
+from ClassesActeur.fonctions_intermediaires_stat import oui_non
 from Menus.open_menu import Menu
   
 class Admin (Classe_abstraite1, Classe_abstraite2):
@@ -14,20 +15,19 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       result=pays_deja(pays_a_supprimer,memory["data"])
       if result==False:
         print("Le pays n'existe pas. Voulez-vous recommencer ?")
-        print("[1] Oui")
-        print("[2] Non")
-        value2 = input("> ")
-        if value2 in ["2","Non","non","N","n"]:
+        value2 = oui_non()
+        if not(value2):
           break
       else:
         print("Etes-vous sûr de vouloir supprimer le pays "+ pays_a_supprimer + "? (O/N)")
-        sur=input(">")
-        if sur in ["oui", "o", "O", "Oui"]:
+        sur=oui_non()
+        if sur :
           enlever_pays(pays_a_supprimer,memory["data"]) 
           print("Le pays "+ pays_a_supprimer +" est bien supprimé")
           break
         else:
           break
+    input("Tapez sur Entrée pour continuer")
     return Menu(memory)
   
   def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
@@ -36,11 +36,9 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       id_newcompte=input("Veuillez renseigner l'id du compte à créer ")
       result= verifier_compte(id_newcompte,memory["Liste_comptes"])
       if result:
-        print("Ce compte existe déjà. Voulez-vous recommencer ?")
-        print("[1] Oui")
-        print("[2] Non")
-        value2 = input("> ")
-        if value2 in ["2","Non","non","N","n"]:
+        print("Ce compte existe déjà. Voulez-vous recommencer ? (O/N)")
+        value2= oui_non()
+        if not(value2):
           break
       else:
         print("Quel est le mot de passe de ce nouveau compte ? ")
@@ -51,6 +49,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         statut_newcompte=input(">")
         ajouter_compte(id_newcompte, mdp_newcompte, liste_statut[int(statut_newcompte)-1],memory["Liste_comptes"])
         break
+    input("Tapez sur Entrée pour continuer")
     return Menu(memory)
   
 
@@ -62,20 +61,19 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
       result=verifier_compte(id_a_supprimer,memory["Liste_comptes"])
       if result==False:
         print("Le compte n'existe pas. Voulez-vous recommencer ?")
-        print("[1] Oui")
-        print("[2] Non")
-        value2 = input("> ")
-        if value2 in ["2","Non","non","N","n"]:
+        value2 = oui_non()
+        if not(value2):
           break
       else:
         print("Etes-vous sur de vouloir supprimer ce compte ? (O/N)") 
-        sur=input(">")
-        if sur in ["o", "O", "oui", "Oui"]:
+        sur = oui_non()
+        if sur :
           enlever_compte(id_a_supprimer,memory["Liste_comptes"])
           print("Compte {} supprimé".format(id_a_supprimer))
           break
         else:
           break
+    input("Tapez sur Entrée pour continuer")
     return Menu(memory)
 
 #Fonctions hors classe
