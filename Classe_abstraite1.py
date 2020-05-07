@@ -62,7 +62,7 @@ class Classe_abstraite1(Classe_abstraite_connexion):
             valeurs_manquantes[i]=0
         #Recherche du nombre d'informations manquantes par pays
         for pays in memory["data"]:
-            for cle in pays : 
+            for cle in memory["data"][pays] :  : 
                 if (memory["data"][pays][cle]=="NA") :
                     valeurs_manquantes[pays]+=1
         #Recherche du maximum de valeurs manquantes
