@@ -73,12 +73,12 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         #Recherche des pays avec le plus de valeurs manquantes
         liste_pays=[]
         for pays in valeurs_manquantes : 
-            if valeurs_manquantes[pays]==max):
+            if valeurs_manquantes[pays]==max:
                 liste_pays.append(pays)
         #Affichage des résultats
         print("Le(s) pays avec le plus de valeurs manquantes est/sont :")
         print(liste_pays)
-        print("Ce(s) pays possède(nt) "+max+" valeurs manquantes"
+        print("Ce(s) pays possède(nt) "+max+" valeurs manquantes")
         return Menu(memory)
     
     def cluster(self,memory):
