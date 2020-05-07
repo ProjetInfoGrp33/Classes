@@ -56,6 +56,29 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         return Menu(memory)
     
     def justin(self,memory):
+        #Création du dictionnaire des valeurs manquantes
+        valeurs_manquantes=memory["data"]
+        for i in valeurs_manquantes:
+            valeurs_manquantes[i]=0
+        #Recherche du nombre d'informations manquantes par pays
+        for pays in memory["data"]:
+            for cle in pays : 
+                if (memory["data"][pays][cle]==NA) :
+                    valeurs_manquantes[pays]+=1
+        #Recherche du maximum de valeurs manquantes
+        max=0
+        for pays in valeurs_manquantes : 
+            if (valeurs_manquantes[pays]>max) : 
+                max=valeurs_manquantes[pays]
+        #Recherche des pays avec le plus de valeurs manquantes
+        liste_pays=[]
+        for pays in valeurs_manquantes : 
+            if valeurs_manquantes[pays]==max):
+                liste_pays.append(pays)
+        #Affichage des résultats
+        print("Le(s) pays avec le plus de valeurs manquantes est/sont :")
+        print(liste_pays)
+        print("Ce(s) pays possède(nt) "+max+" valeurs manquantes"
         return Menu(memory)
     
     def cluster(self,memory):
