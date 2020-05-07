@@ -12,10 +12,10 @@ def graph2d( dico_pays):
   x=[]
   for cle in dico_pays.keys():
     x.append(dico_pays[cle][info_x])
-  x_croissant=sorted(x)
-  rangs_x=[]
-  for j in range(len(x)):
-    rangs_x.append(x_croissant.index(x[j]))
+  # x_croissant=sorted(x)
+  # rangs_x=[]
+  # for j in range(len(x)):
+    # rangs_x.append(x_croissant.index(x[j]))
   print("Quelle variable souhaitez-vous mettre en ordonné ?")
   for k in range(len(liste_info)):
     print("["+str(k+1)+"]"+liste_info[k])
@@ -29,10 +29,10 @@ def graph2d( dico_pays):
   for l in range(len(y)):
     y_selon_x.append(0)
   
-  for m in range (len(y_selon_x)):
-    y_selon_x[m]=y[rangs_x[m]]
+  # for m in range (len(y_selon_x)):
+    # y_selon_x[m]=y[rangs_x[m]]
   
-  plt.scatter(x_croissant,y_selon_x)
+  plt.scatter(x,y)
   plt.title(info_x+" en fonction de " + info_y)
   
   plt.xlabel(info_x)
