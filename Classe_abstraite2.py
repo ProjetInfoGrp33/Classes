@@ -22,7 +22,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
                 pays = proposition[0]
                 critere=proposition[1]
                 valeur=proposition[2]
-                modifier_info(pays, critere, valeur, memory["data"])
+                modifier_information(pays, critere, valeur, memory["data"])
                 supprimer_proposition (indice_proposition, memory["Corrections"]) # on supprime la proposition du dictionnaire, "proposition" correspond à la clé de la proposition
 
                 print("Modification effectuée avec succès")
@@ -75,7 +75,7 @@ class Classe_abstraite2(Classe_abstraite_connexion):
                 print(memory["data"][nom_pays][critere_a_modifier])
                 print("Veuillez saisir l'information qui remplaçera l'information ci-dessus")
                 new_info=rentrer_valeur_critere()
-                modifier_information(nom_pays, critere_a_modifier, new_info) 
+                modifier_information(nom_pays, critere_a_modifier, new_info, memory["data"]) 
             else:
                 print("Voici l'information actuelle que vous souhaitez modifier.")
                 tableau=valeurs_classes_age(memory["data"],[nom_pays])
@@ -98,5 +98,4 @@ def supprimer_proposition(indice, liste_prop):
     
 def modifier_information(pays, critere, subs, dico_pays):
     dico_pays[pays][critere]=subs
-
 
