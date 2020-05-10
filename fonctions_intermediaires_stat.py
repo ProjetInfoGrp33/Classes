@@ -267,9 +267,4 @@ def valeurs_classes_age(donnees,pays=None):
     
  
     
-
-
-
-    
-
     
