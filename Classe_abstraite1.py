@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from Menus.open_menu import Menu
 from ClassesActeur.graph2d import graph2d
 from ClassesActeur.cluster import Kmeans
+import copy
 
 
 class Classe_abstraite1(Classe_abstraite_connexion):
@@ -55,7 +56,7 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         input("Tapez sur Entrée pour continuer")
         return Menu(memory)
     
-   def justin(self,memory):
+    def justin(self,memory):
         #Création du dictionnaire des valeurs manquantes
         valeurs_manquantes=copy.deepcopy(memory["data"])
         for i in valeurs_manquantes:
@@ -63,7 +64,7 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         #Recherche du nombre d'informations manquantes par pays
         for pays in memory["data"]:
             for cle in memory["data"][pays] :
-                if (memory["data"][pays][cle]=="NA") :
+                if (memory["data"][pays][cle] is None) :
                     valeurs_manquantes[pays]+=1
         #Recherche du maximum de valeurs manquantes
         max=0
@@ -158,7 +159,7 @@ def premiers_derniers(donnees):
         if choice.upper() in ['P','PREMIER','PREMIERS']:
             pays_trie=list(reversed(pays_trie)) # on inverse la liste
             break
-        elif choice not in ['D','DERNIER','DERNIERS']:
+        elif choice in ['D','DERNIER','DERNIERS']:
             print("Veuillez taper P pour Premiers ou D pour Derniers")
             continue
     
@@ -234,6 +235,8 @@ def boxplot_age(donnees):
 
 
     
+    
+
     
 
     
