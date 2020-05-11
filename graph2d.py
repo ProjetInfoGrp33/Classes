@@ -39,7 +39,6 @@ def graph2d( dico_pays):
   plt.ylabel(info_y)
   
   plt.show()
-  plt.close()
   
   
               
