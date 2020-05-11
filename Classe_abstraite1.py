@@ -54,6 +54,7 @@ class Classe_abstraite1(Classe_abstraite_connexion):
     def erwan(self,memory): # graphe 2d
         graph2d(memory["data"])
         input("Tapez sur Entrée pour continuer")
+        plt.close()
         return Menu(memory)
     
     def justin(self,memory):
@@ -88,6 +89,7 @@ class Classe_abstraite1(Classe_abstraite_connexion):
         n_cluster = choix_n(2,6)
         Kmeans(memory["data"],n_cluster)
         input("Tapez sur Entrée pour continuer")
+        plt.close()
         return Menu(memory)
         
 
@@ -214,8 +216,8 @@ def diagramme_barre(donnees):
     plt.xlabel('{} (échelle logarithmique)'.format(critere))
     plt.title('Diagramme en barre')
     plt.show()
-    plt.close()
     input("Tapez sur Entrée pour continuer")
+    plt.close()
 
 
 def boxplot_age(donnees):
@@ -229,9 +231,8 @@ def boxplot_age(donnees):
     #on sort le boxplot pour toutes les variables 
     dataframe.boxplot(column=classes)
     plt.show()
-    plt.close()
-    
     input("Tapez sur Entrée pour continuer")
+    plt.close()
 
 
     
