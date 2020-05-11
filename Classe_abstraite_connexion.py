@@ -27,7 +27,8 @@ class Classe_abstraite_connexion(SuperActeur):
       value2=input("> ")
       mdp= memory["Liste_comptes"][value]["Mdp"] 
       if str(value2)==mdp: 
-        print("Connexion réussie !")
+        statut= memory["Liste_comptes"][value]["Statut"]
+        print("Connexion en tant que {} réussie !".format(statut))
         break
       else :
         i+=1
@@ -41,7 +42,6 @@ class Classe_abstraite_connexion(SuperActeur):
           return(None, None, "Consultant")
         print ("Entrer votre mot de passe :")
         continue
-    statut= memory["Liste_comptes"][value]["Statut"]
     return(value,mdp,statut)
     
   def deconnexion(self):
