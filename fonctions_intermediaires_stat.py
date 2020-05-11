@@ -51,12 +51,10 @@ def choix_liste_pays(donnees,nmax=10000):
 def choix_critere(donnees,classes=False): 
     print("Veuillez choisir le critère dans la liste suivante")
     indice=1
-    pays='France'
-    for i in donnees[pays].keys():
-        if i!= "Classes Age" or classes :
-            print('[{}]'.format(indice),i)
-            indice +=1
-    criteres= liste_criteres(donnees,next(iter(donnees)),classes)
+    criteres = liste_criteres(donnees, None, classes)
+    for i in criteres:
+        print('[{}]'.format(indice),i)
+        indice +=1
     choice = choix_n(1,len(criteres)) # on rentre un n entre 1 et 9
     critere = criteres[choice-1]
     return(critere)
@@ -264,6 +262,16 @@ def valeurs_classes_age(donnees,pays=None):
             ligne.append(donnees[i]['Classes Age'][classe])
         tableau.append(ligne)
     return(tableau)
+    
+ 
+    
+
+
+
+    
+
+    
+
     
  
     
