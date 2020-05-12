@@ -14,7 +14,7 @@ class Classe_abstraite_connexion(SuperActeur):
       print("Entrer votre identifiant:")
       value=input("> ")
       if value not in memory["Liste_comptes"]:
-        print("Identifiant inexistant, voulez-vous réessayer ?")
+        print("Identifiant inexistant, voulez-vous réessayer ? (O/N)")
         rep = oui_non()
         if not(rep):
            return (None, None, "Consultant")
