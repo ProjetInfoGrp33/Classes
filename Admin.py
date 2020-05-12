@@ -49,6 +49,7 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
         print("Quel est le statut de ce nouveau compte ?")
         statut_newcompte=input(">")
         ajouter_compte(id_newcompte, mdp_newcompte, liste_statut[int(statut_newcompte)-1],memory["Liste_comptes"])
+        print("Création de {} effectué avec succès".format(id_newcompte))
         break
     input("Tapez sur Entrée pour continuer")
     return Menu(memory)
