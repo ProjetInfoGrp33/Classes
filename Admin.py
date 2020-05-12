@@ -33,7 +33,8 @@ class Admin (Classe_abstraite1, Classe_abstraite2):
   def creer_compte(self, memory): # Par la suite, je vais appeler "dico_compte" le dictionnaire des comptes
     liste_statut=["Geographe", "DataScientist", "Administateur"]
     while True: 
-      id_newcompte=input("Veuillez renseigner l'id du compte à créer ")
+      print("Veuillez renseigner l'id du compte à créer ")
+      id_newcompte=input(">")      
       result= verifier_compte(id_newcompte,memory["Liste_comptes"])
       if result:
         print("Ce compte existe déjà. Voulez-vous recommencer ? (O/N)")
